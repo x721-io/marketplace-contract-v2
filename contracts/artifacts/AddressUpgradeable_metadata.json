@@ -1,0 +1,51 @@
+{
+	"compiler": {
+		"version": "0.7.6+commit.7338295f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/AddressUpgradeable.sol": "AddressUpgradeable"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/AddressUpgradeable.sol": {
+			"keccak256": "0x5ea783dd42af8719f216ae87201e96ce503bfcaf10a8c5d2af8944d16dfa292d",
+			"urls": [
+				"bzz-raw://41b2896f05337a9201c486449e207173f50826d4a6e866ce5b50770577364cc9",
+				"dweb:/ipfs/QmT3GC2PrHjLw8CdVtJ2LhPknroAGjhpUCRFnD4yvkBwoZ"
+			]
+		},
+		"contracts/Hashes.sol": {
+			"keccak256": "0x782dd04df8f3fd47d65e037a5fab1bbd56aa64accb236d7903b21af7069cb209",
+			"urls": [
+				"bzz-raw://f926190b7e0e37074cedbe9ec48d5eaf16455e84b448eb11a40b4c9ea2cc04e7",
+				"dweb:/ipfs/QmW8GRZfEXAJCR7pUzBLHTKoFirAszY9nDbTwYTEGidyay"
+			]
+		}
+	},
+	"version": 1
+}

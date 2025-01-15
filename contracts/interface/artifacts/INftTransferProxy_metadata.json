@@ -1,0 +1,136 @@
+{
+	"compiler": {
+		"version": "0.7.6+commit.7338295f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "contract IERC1155Upgradeable",
+						"name": "token",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "erc1155safeTransferFrom",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract IERC721Upgradeable",
+						"name": "token",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "erc721safeTransferFrom",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/interface/INftTransferProxy.sol": "INftTransferProxy"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/interface/IERC1155Upgradeable.sol": {
+			"keccak256": "0xf5f52b1de1287787173ad95ccb4d828da96ae57fd8e89cd7150e401ba91dd443",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://a940f8dcf21b54b1dfd91bcbf07524bd24fd88201511ad23868955a9d8bbf198",
+				"dweb:/ipfs/Qmb86XFrjU9vKyyNXjLkeYyUwtb2GoEJGPnwo3tjHgn5Vv"
+			]
+		},
+		"contracts/interface/IERC165Upgradeable.sol": {
+			"keccak256": "0xafa7081e4a8d4a7e74358be6c0a2159faea4407a18159e6e2412e81955be5a57",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://a748d0bece433aa910c713134d40c5bb393656514caade320199505f71ae3f1c",
+				"dweb:/ipfs/QmUqLuXQphSEzaiismaoVmcWCCEURqUPKVahXCEYLjQbjR"
+			]
+		},
+		"contracts/interface/IERC721Upgradeable.sol": {
+			"keccak256": "0xb7d66e3745df0ebe9dcd9eb5f5642dd0202b836967affb0b7277f09beeb47e0a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://48312e28a5da20f6028958fd161eb240b11486f227bfb5347981ffa55a186775",
+				"dweb:/ipfs/QmZZFUpL4iSmBP3z5RdCevJkukQPXMBoRnCzRN4GKBgdkR"
+			]
+		},
+		"contracts/interface/INftTransferProxy.sol": {
+			"keccak256": "0x1b399c4d1a81bfb68180920f2610194c7ec701f4ea34d012d4dee2c0454ad5ab",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://37b671ae844d8e00a5ed807666c1beda5a21970575e925901288e8cfeb30bcbf",
+				"dweb:/ipfs/QmY21B8BWtDekLRLEtSFTgYQHFKDNNcyeiZgcbTtwNVRfn"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.7.6+commit.7338295f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/library/LibSignature.sol": "LibSignature"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/library/LibSignature.sol": {
+			"keccak256": "0x8616caaaef17b3430046f8a3d685e721f35af9ef4a0abf709aa0dee7c58d0ea4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b229a3f90a49f3fb647507a584970a32ecb59ce306e668b6dcfd8dc6f00a86ff",
+				"dweb:/ipfs/QmQ1NF1GV4Lv37Q9NcFvwsTcixRSGjGHEppA9vGuwWBVqe"
+			]
+		}
+	},
+	"version": 1
+}

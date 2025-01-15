@@ -1,0 +1,53 @@
+{
+	"compiler": {
+		"version": "0.7.6+commit.7338295f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/interface/ITransferExecutor.sol": "ITransferExecutor"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/interface/ITransferExecutor.sol": {
+			"keccak256": "0xa6c2551eb4a002744ae13ce11c9515bb05b59f256556b96a82b3b94ac5b1415e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ebac429f0f3c503e4f5598f1072fa02a30c3ff4a63c555fee5dbf14a1807449c",
+				"dweb:/ipfs/QmdmohkweQfpfmvZFzmWNU2m89HyZDdd2mG7V6uVvfS37s"
+			]
+		},
+		"contracts/library/LibAsset.sol": {
+			"keccak256": "0xb2c9d90409b6dc28cd6acace407206fd6a87add96723e8b69540f27b7b56a06c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://fa73991461a9244db4e7e0aa85be44fb9251d9aca586bc267a5a3fa359ab9111",
+				"dweb:/ipfs/QmNayJGhzy1Zgz4JVFv4EaY4Hry5PHqGDgf4QQ3yeGL6sL"
+			]
+		}
+	},
+	"version": 1
+}

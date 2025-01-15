@@ -1,0 +1,80 @@
+{
+	"compiler": {
+		"version": "0.7.6+commit.7338295f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "ERC1155_LAZY_ASSET_CLASS",
+				"outputs": [
+					{
+						"internalType": "bytes4",
+						"name": "",
+						"type": "bytes4"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "MINT_AND_TRANSFER_TYPEHASH",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/LibERC1155LazyMint.sol": "LibERC1155LazyMint"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/LibERC1155LazyMint.sol": {
+			"keccak256": "0x144152f89f42b58e665ee5d10021adef356483bf414ed6e1273a5c7e1de523bb",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8e7b6193e3b78a316483e37637d50e2dc999b52a25d46bd44c20b265ec566432",
+				"dweb:/ipfs/QmX5zMJ2N3DKgTeFAKKTcTx9oC23JBts3YEiiDf4d8vrDS"
+			]
+		},
+		"contracts/library/LibPart.sol": {
+			"keccak256": "0xcb5f27f2bb23b9c0db70c41955579692eda509ccef6ae6619f225ee30bbf7b9f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://33bd590ee1dbaa0d769b1fe8ca5a89199866a7cdb4927d82bd22e1dcc6e69701",
+				"dweb:/ipfs/QmSgvKSeWSAq9fgNCuNtBbQooArz3wkYh1FCQ2k7FzLwyU"
+			]
+		}
+	},
+	"version": 1
+}

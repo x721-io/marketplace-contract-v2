@@ -1,0 +1,90 @@
+{
+	"compiler": {
+		"version": "0.7.6+commit.7338295f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "getRoyalties",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "address payable",
+								"name": "account",
+								"type": "address"
+							},
+							{
+								"internalType": "uint96",
+								"name": "value",
+								"type": "uint96"
+							}
+						],
+						"internalType": "struct LibPart.Part[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/interface/IRoyaltiesProvider.sol": "IRoyaltiesProvider"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/interface/IRoyaltiesProvider.sol": {
+			"keccak256": "0x4006c90467bd9bf9fc916c6362799d4df4c1e9d3df6e4bcc4a589ff2edd0fb5b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0d4836515cb27a259115952df730bddc6ff26aa8510efdd4c60c86852f1fd92a",
+				"dweb:/ipfs/QmUGJ59rYDB3F2qYj3upRNMC4MTvBG5Jz8Sf3HfzgQEVu6"
+			]
+		},
+		"contracts/library/LibPart.sol": {
+			"keccak256": "0xcb5f27f2bb23b9c0db70c41955579692eda509ccef6ae6619f225ee30bbf7b9f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://33bd590ee1dbaa0d769b1fe8ca5a89199866a7cdb4927d82bd22e1dcc6e69701",
+				"dweb:/ipfs/QmSgvKSeWSAq9fgNCuNtBbQooArz3wkYh1FCQ2k7FzLwyU"
+			]
+		}
+	},
+	"version": 1
+}

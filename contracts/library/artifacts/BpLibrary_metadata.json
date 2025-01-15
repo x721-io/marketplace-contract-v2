@@ -1,0 +1,53 @@
+{
+	"compiler": {
+		"version": "0.7.6+commit.7338295f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/library/BpLibrary.sol": "BpLibrary"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/SafeMathUpgradeable.sol": {
+			"keccak256": "0x347bc383ab4458cc4c63cbafcad04a73fa20b8452b9d6e7b7de1f1f2a9ddf95e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://1481ef949ea2d22612f8f926277c29b8be74c3cc3a49ac75cf430968064dd024",
+				"dweb:/ipfs/QmNaAgpzWbCu1NCyqdeFmT1SEqnk59y4w17FZW3DuLvLpN"
+			]
+		},
+		"contracts/library/BpLibrary.sol": {
+			"keccak256": "0x331e37f04ca677dd2941aff2fec984ed3f39fe705dc57eefda4b820cc21d3299",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://42d2a72ef33c97040c929b4443e680d8b25486252fbf53cd24964adfb622906a",
+				"dweb:/ipfs/QmSJqFKNGNdjEcFUKbRoZWTKY1GEbYHvcVmf1SzDRwDK6Q"
+			]
+		}
+	},
+	"version": 1
+}

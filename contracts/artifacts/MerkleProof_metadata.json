@@ -1,0 +1,53 @@
+{
+	"compiler": {
+		"version": "0.7.6+commit.7338295f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/MerkleProof.sol": "MerkleProof"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Hashes.sol": {
+			"keccak256": "0xec937e5d8295c4b2ad9e093edad82b1072f2cf96a81c219f3fa7e4569965d2e4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://52f9dc5e1e94e262cd236050502fcc31bbb0ad45ffb21ac918d7feb930ca5730",
+				"dweb:/ipfs/QmSL3LUe25NYN2bcF6U49HG3DUP7csprx294Fw2Qz33c4o"
+			]
+		},
+		"contracts/MerkleProof.sol": {
+			"keccak256": "0x3c32c4587050a17288832b2a9310e1cf51abd2e731a7279af93b526a6f727781",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0e96694de73de2e9407676db4d336474f70ec60557e31e90236c4a77022e70e0",
+				"dweb:/ipfs/QmTbBkTQ4rctBma81jcND4cSLmWddUoCAHd66d2LRNu1sb"
+			]
+		}
+	},
+	"version": 1
+}

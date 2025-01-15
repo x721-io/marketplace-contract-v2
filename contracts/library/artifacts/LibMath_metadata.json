@@ -1,0 +1,52 @@
+{
+	"compiler": {
+		"version": "0.7.6+commit.7338295f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/library/LibMath.sol": "LibMath"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/SafeMathUpgradeable.sol": {
+			"keccak256": "0x4431b042ab0f0f344ed31cc3dee0664a063af9f1011b75b426ffd1bf246bb84e",
+			"urls": [
+				"bzz-raw://6773d28c03f1365a1f02fb0727c5bd781da913078b5b6bc9eb87d6811d3f37a2",
+				"dweb:/ipfs/QmciQSYEki3RYKV4nxKwwfiyisPRE4jSnCSM1h3Z1hrd45"
+			]
+		},
+		"contracts/library/LibMath.sol": {
+			"keccak256": "0x9529e1c0c3347d6a95285059dd606ff9d13babcbefd0235b43154504dc2e9d76",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ee85bdf17e3212c65626f1fb03ad9a2cb0c3ef734e87408ca4f4eee074ef57b2",
+				"dweb:/ipfs/Qmdw7aY9XpAgWXYAUw2YCL3Kcz7w65hUWbC3FKqhVLhupv"
+			]
+		}
+	},
+	"version": 1
+}

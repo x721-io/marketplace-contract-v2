@@ -1,0 +1,53 @@
+{
+	"compiler": {
+		"version": "0.7.6+commit.7338295f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/library/LibOrderData.sol": "LibOrderData"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/library/LibOrderData.sol": {
+			"keccak256": "0x1acb4f7fe77f780781f42fe2db1ed2ff95974600b064b9d9a2349fa394fe2065",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://cdbd755036873b89a8beb8a6bde01ed3a9ae50cf887c0480fb3fa418d9b82820",
+				"dweb:/ipfs/QmehrFCrNp6HqtD89h5na4t4JNawkhVoGBUQuoLEcH5cRT"
+			]
+		},
+		"contracts/library/LibPart.sol": {
+			"keccak256": "0xcb5f27f2bb23b9c0db70c41955579692eda509ccef6ae6619f225ee30bbf7b9f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://33bd590ee1dbaa0d769b1fe8ca5a89199866a7cdb4927d82bd22e1dcc6e69701",
+				"dweb:/ipfs/QmSgvKSeWSAq9fgNCuNtBbQooArz3wkYh1FCQ2k7FzLwyU"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,1428 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"goerli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"generatedSources": [],
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"deployedBytecode": {
+			"generatedSources": [],
+			"immutableReferences": {},
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"gasEstimates": null,
+		"methodIdentifiers": {
+			"_owner()": "b2bdfa7b",
+			"cancel((uint8,address,(uint8,address,uint256,uint256),address,(uint8,address,uint256,uint256),uint256,uint256,uint256,(address,uint256),(address,uint256),bytes,bytes32,bytes32[],uint16))": "d362d3ff",
+			"cancelOrder((uint8,address,(uint8,address,uint256,uint256),address,(uint8,address,uint256,uint256),uint256,uint256,uint256,(address,uint256),(address,uint256),bytes,bytes32,bytes32[],uint16))": "8b42af3e",
+			"directAcceptBid(((uint8,address,(uint8,address,uint256,uint256),address,(uint8,address,uint256,uint256),uint256,uint256,uint256,(address,uint256),(address,uint256),bytes,bytes32,bytes32[],uint16),(uint8,address,(uint8,address,uint256,uint256),address,(uint8,address,uint256,uint256),uint256,uint256,uint256,(address,uint256),(address,uint256),bytes,bytes32,bytes32[],uint16)))": "33033608",
+			"fills(bytes32)": "20158c44",
+			"getTransferProxy(uint8)": "b36c9b29",
+			"matchOrders((uint8,address,(uint8,address,uint256,uint256),address,(uint8,address,uint256,uint256),uint256,uint256,uint256,(address,uint256),(address,uint256),bytes,bytes32,bytes32[],uint16)[],(uint8,address,(uint8,address,uint256,uint256),address,(uint8,address,uint256,uint256),uint256,uint256,uint256,(address,uint256),(address,uint256),bytes,bytes32,bytes32[],uint16)[])": "faa2cc7c",
+			"owner()": "8da5cb5b",
+			"renounceOwnership()": "715018a6",
+			"setAssetMatcher(uint256,address)": "c648a687",
+			"setTransferProxy(uint8,address)": "4cfe4cd8",
+			"transferOwnership(address)": "f2fde38b",
+			"validateListing(bytes32,bytes32[],(uint8,address,(uint8,address,uint256,uint256),address,(uint8,address,uint256,uint256),uint256,uint256,uint256,(address,uint256),(address,uint256),bytes,bytes32,bytes32[],uint16))": "3e2d95ff"
+		}
+	},
+	"abi": [
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": false,
+					"internalType": "bytes32",
+					"name": "hash",
+					"type": "bytes32"
+				}
+			],
+			"name": "Cancel",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": false,
+					"internalType": "address",
+					"name": "maker",
+					"type": "address"
+				},
+				{
+					"indexed": false,
+					"internalType": "bytes",
+					"name": "sig",
+					"type": "bytes"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint16",
+					"name": "index",
+					"type": "uint16"
+				}
+			],
+			"name": "CancelOrder",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": false,
+					"internalType": "address",
+					"name": "maker",
+					"type": "address"
+				},
+				{
+					"indexed": false,
+					"internalType": "address",
+					"name": "taker",
+					"type": "address"
+				},
+				{
+					"indexed": false,
+					"internalType": "bytes",
+					"name": "sig",
+					"type": "bytes"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint16",
+					"name": "index",
+					"type": "uint16"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "currentFilledValue",
+					"type": "uint256"
+				}
+			],
+			"name": "FillOrder",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": false,
+					"internalType": "bytes32",
+					"name": "leftHash",
+					"type": "bytes32"
+				},
+				{
+					"indexed": false,
+					"internalType": "bytes32",
+					"name": "rightHash",
+					"type": "bytes32"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "newLeftFill",
+					"type": "uint256"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "newRightFill",
+					"type": "uint256"
+				}
+			],
+			"name": "Match",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"internalType": "uint256",
+					"name": "assetType",
+					"type": "uint256"
+				},
+				{
+					"indexed": false,
+					"internalType": "address",
+					"name": "matcher",
+					"type": "address"
+				}
+			],
+			"name": "MatcherChange",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"internalType": "address",
+					"name": "previousOwner",
+					"type": "address"
+				},
+				{
+					"indexed": true,
+					"internalType": "address",
+					"name": "newOwner",
+					"type": "address"
+				}
+			],
+			"name": "OwnershipTransferred",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"internalType": "uint256",
+					"name": "assetType",
+					"type": "uint256"
+				},
+				{
+					"indexed": false,
+					"internalType": "address",
+					"name": "proxy",
+					"type": "address"
+				}
+			],
+			"name": "ProxyChange",
+			"type": "event"
+		},
+		{
+			"inputs": [],
+			"name": "_owner",
+			"outputs": [
+				{
+					"internalType": "address",
+					"name": "",
+					"type": "address"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"components": [
+						{
+							"internalType": "enum LibOrder.OrderType",
+							"name": "orderType",
+							"type": "uint8"
+						},
+						{
+							"internalType": "address",
+							"name": "maker",
+							"type": "address"
+						},
+						{
+							"components": [
+								{
+									"internalType": "uint8",
+									"name": "assetType",
+									"type": "uint8"
+								},
+								{
+									"internalType": "address",
+									"name": "contractAddress",
+									"type": "address"
+								},
+								{
+									"internalType": "uint256",
+									"name": "value",
+									"type": "uint256"
+								},
+								{
+									"internalType": "uint256",
+									"name": "id",
+									"type": "uint256"
+								}
+							],
+							"internalType": "struct LibAsset.Asset",
+							"name": "makeAsset",
+							"type": "tuple"
+						},
+						{
+							"internalType": "address",
+							"name": "taker",
+							"type": "address"
+						},
+						{
+							"components": [
+								{
+									"internalType": "uint8",
+									"name": "assetType",
+									"type": "uint8"
+								},
+								{
+									"internalType": "address",
+									"name": "contractAddress",
+									"type": "address"
+								},
+								{
+									"internalType": "uint256",
+									"name": "value",
+									"type": "uint256"
+								},
+								{
+									"internalType": "uint256",
+									"name": "id",
+									"type": "uint256"
+								}
+							],
+							"internalType": "struct LibAsset.Asset",
+							"name": "takeAsset",
+							"type": "tuple"
+						},
+						{
+							"internalType": "uint256",
+							"name": "salt",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "start",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "end",
+							"type": "uint256"
+						},
+						{
+							"components": [
+								{
+									"internalType": "address",
+									"name": "receiver",
+									"type": "address"
+								},
+								{
+									"internalType": "uint256",
+									"name": "amount",
+									"type": "uint256"
+								}
+							],
+							"internalType": "struct LibOrder.Fee",
+							"name": "originFee",
+							"type": "tuple"
+						},
+						{
+							"components": [
+								{
+									"internalType": "address",
+									"name": "receiver",
+									"type": "address"
+								},
+								{
+									"internalType": "uint256",
+									"name": "amount",
+									"type": "uint256"
+								}
+							],
+							"internalType": "struct LibOrder.Fee",
+							"name": "royaltyFee",
+							"type": "tuple"
+						},
+						{
+							"internalType": "bytes",
+							"name": "sig",
+							"type": "bytes"
+						},
+						{
+							"internalType": "bytes32",
+							"name": "root",
+							"type": "bytes32"
+						},
+						{
+							"internalType": "bytes32[]",
+							"name": "proof",
+							"type": "bytes32[]"
+						},
+						{
+							"internalType": "uint16",
+							"name": "index",
+							"type": "uint16"
+						}
+					],
+					"internalType": "struct LibOrder.Order",
+					"name": "order",
+					"type": "tuple"
+				}
+			],
+			"name": "cancel",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"components": [
+						{
+							"internalType": "enum LibOrder.OrderType",
+							"name": "orderType",
+							"type": "uint8"
+						},
+						{
+							"internalType": "address",
+							"name": "maker",
+							"type": "address"
+						},
+						{
+							"components": [
+								{
+									"internalType": "uint8",
+									"name": "assetType",
+									"type": "uint8"
+								},
+								{
+									"internalType": "address",
+									"name": "contractAddress",
+									"type": "address"
+								},
+								{
+									"internalType": "uint256",
+									"name": "value",
+									"type": "uint256"
+								},
+								{
+									"internalType": "uint256",
+									"name": "id",
+									"type": "uint256"
+								}
+							],
+							"internalType": "struct LibAsset.Asset",
+							"name": "makeAsset",
+							"type": "tuple"
+						},
+						{
+							"internalType": "address",
+							"name": "taker",
+							"type": "address"
+						},
+						{
+							"components": [
+								{
+									"internalType": "uint8",
+									"name": "assetType",
+									"type": "uint8"
+								},
+								{
+									"internalType": "address",
+									"name": "contractAddress",
+									"type": "address"
+								},
+								{
+									"internalType": "uint256",
+									"name": "value",
+									"type": "uint256"
+								},
+								{
+									"internalType": "uint256",
+									"name": "id",
+									"type": "uint256"
+								}
+							],
+							"internalType": "struct LibAsset.Asset",
+							"name": "takeAsset",
+							"type": "tuple"
+						},
+						{
+							"internalType": "uint256",
+							"name": "salt",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "start",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "end",
+							"type": "uint256"
+						},
+						{
+							"components": [
+								{
+									"internalType": "address",
+									"name": "receiver",
+									"type": "address"
+								},
+								{
+									"internalType": "uint256",
+									"name": "amount",
+									"type": "uint256"
+								}
+							],
+							"internalType": "struct LibOrder.Fee",
+							"name": "originFee",
+							"type": "tuple"
+						},
+						{
+							"components": [
+								{
+									"internalType": "address",
+									"name": "receiver",
+									"type": "address"
+								},
+								{
+									"internalType": "uint256",
+									"name": "amount",
+									"type": "uint256"
+								}
+							],
+							"internalType": "struct LibOrder.Fee",
+							"name": "royaltyFee",
+							"type": "tuple"
+						},
+						{
+							"internalType": "bytes",
+							"name": "sig",
+							"type": "bytes"
+						},
+						{
+							"internalType": "bytes32",
+							"name": "root",
+							"type": "bytes32"
+						},
+						{
+							"internalType": "bytes32[]",
+							"name": "proof",
+							"type": "bytes32[]"
+						},
+						{
+							"internalType": "uint16",
+							"name": "index",
+							"type": "uint16"
+						}
+					],
+					"internalType": "struct LibOrder.Order",
+					"name": "order",
+					"type": "tuple"
+				}
+			],
+			"name": "cancelOrder",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"components": [
+						{
+							"components": [
+								{
+									"internalType": "enum LibOrder.OrderType",
+									"name": "orderType",
+									"type": "uint8"
+								},
+								{
+									"internalType": "address",
+									"name": "maker",
+									"type": "address"
+								},
+								{
+									"components": [
+										{
+											"internalType": "uint8",
+											"name": "assetType",
+											"type": "uint8"
+										},
+										{
+											"internalType": "address",
+											"name": "contractAddress",
+											"type": "address"
+										},
+										{
+											"internalType": "uint256",
+											"name": "value",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint256",
+											"name": "id",
+											"type": "uint256"
+										}
+									],
+									"internalType": "struct LibAsset.Asset",
+									"name": "makeAsset",
+									"type": "tuple"
+								},
+								{
+									"internalType": "address",
+									"name": "taker",
+									"type": "address"
+								},
+								{
+									"components": [
+										{
+											"internalType": "uint8",
+											"name": "assetType",
+											"type": "uint8"
+										},
+										{
+											"internalType": "address",
+											"name": "contractAddress",
+											"type": "address"
+										},
+										{
+											"internalType": "uint256",
+											"name": "value",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint256",
+											"name": "id",
+											"type": "uint256"
+										}
+									],
+									"internalType": "struct LibAsset.Asset",
+									"name": "takeAsset",
+									"type": "tuple"
+								},
+								{
+									"internalType": "uint256",
+									"name": "salt",
+									"type": "uint256"
+								},
+								{
+									"internalType": "uint256",
+									"name": "start",
+									"type": "uint256"
+								},
+								{
+									"internalType": "uint256",
+									"name": "end",
+									"type": "uint256"
+								},
+								{
+									"components": [
+										{
+											"internalType": "address",
+											"name": "receiver",
+											"type": "address"
+										},
+										{
+											"internalType": "uint256",
+											"name": "amount",
+											"type": "uint256"
+										}
+									],
+									"internalType": "struct LibOrder.Fee",
+									"name": "originFee",
+									"type": "tuple"
+								},
+								{
+									"components": [
+										{
+											"internalType": "address",
+											"name": "receiver",
+											"type": "address"
+										},
+										{
+											"internalType": "uint256",
+											"name": "amount",
+											"type": "uint256"
+										}
+									],
+									"internalType": "struct LibOrder.Fee",
+									"name": "royaltyFee",
+									"type": "tuple"
+								},
+								{
+									"internalType": "bytes",
+									"name": "sig",
+									"type": "bytes"
+								},
+								{
+									"internalType": "bytes32",
+									"name": "root",
+									"type": "bytes32"
+								},
+								{
+									"internalType": "bytes32[]",
+									"name": "proof",
+									"type": "bytes32[]"
+								},
+								{
+									"internalType": "uint16",
+									"name": "index",
+									"type": "uint16"
+								}
+							],
+							"internalType": "struct LibOrder.Order",
+							"name": "bidOrder",
+							"type": "tuple"
+						},
+						{
+							"components": [
+								{
+									"internalType": "enum LibOrder.OrderType",
+									"name": "orderType",
+									"type": "uint8"
+								},
+								{
+									"internalType": "address",
+									"name": "maker",
+									"type": "address"
+								},
+								{
+									"components": [
+										{
+											"internalType": "uint8",
+											"name": "assetType",
+											"type": "uint8"
+										},
+										{
+											"internalType": "address",
+											"name": "contractAddress",
+											"type": "address"
+										},
+										{
+											"internalType": "uint256",
+											"name": "value",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint256",
+											"name": "id",
+											"type": "uint256"
+										}
+									],
+									"internalType": "struct LibAsset.Asset",
+									"name": "makeAsset",
+									"type": "tuple"
+								},
+								{
+									"internalType": "address",
+									"name": "taker",
+									"type": "address"
+								},
+								{
+									"components": [
+										{
+											"internalType": "uint8",
+											"name": "assetType",
+											"type": "uint8"
+										},
+										{
+											"internalType": "address",
+											"name": "contractAddress",
+											"type": "address"
+										},
+										{
+											"internalType": "uint256",
+											"name": "value",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint256",
+											"name": "id",
+											"type": "uint256"
+										}
+									],
+									"internalType": "struct LibAsset.Asset",
+									"name": "takeAsset",
+									"type": "tuple"
+								},
+								{
+									"internalType": "uint256",
+									"name": "salt",
+									"type": "uint256"
+								},
+								{
+									"internalType": "uint256",
+									"name": "start",
+									"type": "uint256"
+								},
+								{
+									"internalType": "uint256",
+									"name": "end",
+									"type": "uint256"
+								},
+								{
+									"components": [
+										{
+											"internalType": "address",
+											"name": "receiver",
+											"type": "address"
+										},
+										{
+											"internalType": "uint256",
+											"name": "amount",
+											"type": "uint256"
+										}
+									],
+									"internalType": "struct LibOrder.Fee",
+									"name": "originFee",
+									"type": "tuple"
+								},
+								{
+									"components": [
+										{
+											"internalType": "address",
+											"name": "receiver",
+											"type": "address"
+										},
+										{
+											"internalType": "uint256",
+											"name": "amount",
+											"type": "uint256"
+										}
+									],
+									"internalType": "struct LibOrder.Fee",
+									"name": "royaltyFee",
+									"type": "tuple"
+								},
+								{
+									"internalType": "bytes",
+									"name": "sig",
+									"type": "bytes"
+								},
+								{
+									"internalType": "bytes32",
+									"name": "root",
+									"type": "bytes32"
+								},
+								{
+									"internalType": "bytes32[]",
+									"name": "proof",
+									"type": "bytes32[]"
+								},
+								{
+									"internalType": "uint16",
+									"name": "index",
+									"type": "uint16"
+								}
+							],
+							"internalType": "struct LibOrder.Order",
+							"name": "sellOrder",
+							"type": "tuple"
+						}
+					],
+					"internalType": "struct LibDirectTransfer.AcceptBid",
+					"name": "direct",
+					"type": "tuple"
+				}
+			],
+			"name": "directAcceptBid",
+			"outputs": [],
+			"stateMutability": "payable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "bytes32",
+					"name": "",
+					"type": "bytes32"
+				}
+			],
+			"name": "fills",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint8",
+					"name": "index",
+					"type": "uint8"
+				}
+			],
+			"name": "getTransferProxy",
+			"outputs": [
+				{
+					"internalType": "address",
+					"name": "",
+					"type": "address"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"components": [
+						{
+							"internalType": "enum LibOrder.OrderType",
+							"name": "orderType",
+							"type": "uint8"
+						},
+						{
+							"internalType": "address",
+							"name": "maker",
+							"type": "address"
+						},
+						{
+							"components": [
+								{
+									"internalType": "uint8",
+									"name": "assetType",
+									"type": "uint8"
+								},
+								{
+									"internalType": "address",
+									"name": "contractAddress",
+									"type": "address"
+								},
+								{
+									"internalType": "uint256",
+									"name": "value",
+									"type": "uint256"
+								},
+								{
+									"internalType": "uint256",
+									"name": "id",
+									"type": "uint256"
+								}
+							],
+							"internalType": "struct LibAsset.Asset",
+							"name": "makeAsset",
+							"type": "tuple"
+						},
+						{
+							"internalType": "address",
+							"name": "taker",
+							"type": "address"
+						},
+						{
+							"components": [
+								{
+									"internalType": "uint8",
+									"name": "assetType",
+									"type": "uint8"
+								},
+								{
+									"internalType": "address",
+									"name": "contractAddress",
+									"type": "address"
+								},
+								{
+									"internalType": "uint256",
+									"name": "value",
+									"type": "uint256"
+								},
+								{
+									"internalType": "uint256",
+									"name": "id",
+									"type": "uint256"
+								}
+							],
+							"internalType": "struct LibAsset.Asset",
+							"name": "takeAsset",
+							"type": "tuple"
+						},
+						{
+							"internalType": "uint256",
+							"name": "salt",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "start",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "end",
+							"type": "uint256"
+						},
+						{
+							"components": [
+								{
+									"internalType": "address",
+									"name": "receiver",
+									"type": "address"
+								},
+								{
+									"internalType": "uint256",
+									"name": "amount",
+									"type": "uint256"
+								}
+							],
+							"internalType": "struct LibOrder.Fee",
+							"name": "originFee",
+							"type": "tuple"
+						},
+						{
+							"components": [
+								{
+									"internalType": "address",
+									"name": "receiver",
+									"type": "address"
+								},
+								{
+									"internalType": "uint256",
+									"name": "amount",
+									"type": "uint256"
+								}
+							],
+							"internalType": "struct LibOrder.Fee",
+							"name": "royaltyFee",
+							"type": "tuple"
+						},
+						{
+							"internalType": "bytes",
+							"name": "sig",
+							"type": "bytes"
+						},
+						{
+							"internalType": "bytes32",
+							"name": "root",
+							"type": "bytes32"
+						},
+						{
+							"internalType": "bytes32[]",
+							"name": "proof",
+							"type": "bytes32[]"
+						},
+						{
+							"internalType": "uint16",
+							"name": "index",
+							"type": "uint16"
+						}
+					],
+					"internalType": "struct LibOrder.Order[]",
+					"name": "orderLefts",
+					"type": "tuple[]"
+				},
+				{
+					"components": [
+						{
+							"internalType": "enum LibOrder.OrderType",
+							"name": "orderType",
+							"type": "uint8"
+						},
+						{
+							"internalType": "address",
+							"name": "maker",
+							"type": "address"
+						},
+						{
+							"components": [
+								{
+									"internalType": "uint8",
+									"name": "assetType",
+									"type": "uint8"
+								},
+								{
+									"internalType": "address",
+									"name": "contractAddress",
+									"type": "address"
+								},
+								{
+									"internalType": "uint256",
+									"name": "value",
+									"type": "uint256"
+								},
+								{
+									"internalType": "uint256",
+									"name": "id",
+									"type": "uint256"
+								}
+							],
+							"internalType": "struct LibAsset.Asset",
+							"name": "makeAsset",
+							"type": "tuple"
+						},
+						{
+							"internalType": "address",
+							"name": "taker",
+							"type": "address"
+						},
+						{
+							"components": [
+								{
+									"internalType": "uint8",
+									"name": "assetType",
+									"type": "uint8"
+								},
+								{
+									"internalType": "address",
+									"name": "contractAddress",
+									"type": "address"
+								},
+								{
+									"internalType": "uint256",
+									"name": "value",
+									"type": "uint256"
+								},
+								{
+									"internalType": "uint256",
+									"name": "id",
+									"type": "uint256"
+								}
+							],
+							"internalType": "struct LibAsset.Asset",
+							"name": "takeAsset",
+							"type": "tuple"
+						},
+						{
+							"internalType": "uint256",
+							"name": "salt",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "start",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "end",
+							"type": "uint256"
+						},
+						{
+							"components": [
+								{
+									"internalType": "address",
+									"name": "receiver",
+									"type": "address"
+								},
+								{
+									"internalType": "uint256",
+									"name": "amount",
+									"type": "uint256"
+								}
+							],
+							"internalType": "struct LibOrder.Fee",
+							"name": "originFee",
+							"type": "tuple"
+						},
+						{
+							"components": [
+								{
+									"internalType": "address",
+									"name": "receiver",
+									"type": "address"
+								},
+								{
+									"internalType": "uint256",
+									"name": "amount",
+									"type": "uint256"
+								}
+							],
+							"internalType": "struct LibOrder.Fee",
+							"name": "royaltyFee",
+							"type": "tuple"
+						},
+						{
+							"internalType": "bytes",
+							"name": "sig",
+							"type": "bytes"
+						},
+						{
+							"internalType": "bytes32",
+							"name": "root",
+							"type": "bytes32"
+						},
+						{
+							"internalType": "bytes32[]",
+							"name": "proof",
+							"type": "bytes32[]"
+						},
+						{
+							"internalType": "uint16",
+							"name": "index",
+							"type": "uint16"
+						}
+					],
+					"internalType": "struct LibOrder.Order[]",
+					"name": "orderRights",
+					"type": "tuple[]"
+				}
+			],
+			"name": "matchOrders",
+			"outputs": [],
+			"stateMutability": "payable",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "owner",
+			"outputs": [
+				{
+					"internalType": "address",
+					"name": "",
+					"type": "address"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "renounceOwnership",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "assetType",
+					"type": "uint256"
+				},
+				{
+					"internalType": "address",
+					"name": "matcher",
+					"type": "address"
+				}
+			],
+			"name": "setAssetMatcher",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint8",
+					"name": "index",
+					"type": "uint8"
+				},
+				{
+					"internalType": "address",
+					"name": "proxy",
+					"type": "address"
+				}
+			],
+			"name": "setTransferProxy",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "newOwner",
+					"type": "address"
+				}
+			],
+			"name": "transferOwnership",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "bytes32",
+					"name": "root",
+					"type": "bytes32"
+				},
+				{
+					"internalType": "bytes32[]",
+					"name": "proof",
+					"type": "bytes32[]"
+				},
+				{
+					"components": [
+						{
+							"internalType": "enum LibOrder.OrderType",
+							"name": "orderType",
+							"type": "uint8"
+						},
+						{
+							"internalType": "address",
+							"name": "maker",
+							"type": "address"
+						},
+						{
+							"components": [
+								{
+									"internalType": "uint8",
+									"name": "assetType",
+									"type": "uint8"
+								},
+								{
+									"internalType": "address",
+									"name": "contractAddress",
+									"type": "address"
+								},
+								{
+									"internalType": "uint256",
+									"name": "value",
+									"type": "uint256"
+								},
+								{
+									"internalType": "uint256",
+									"name": "id",
+									"type": "uint256"
+								}
+							],
+							"internalType": "struct LibAsset.Asset",
+							"name": "makeAsset",
+							"type": "tuple"
+						},
+						{
+							"internalType": "address",
+							"name": "taker",
+							"type": "address"
+						},
+						{
+							"components": [
+								{
+									"internalType": "uint8",
+									"name": "assetType",
+									"type": "uint8"
+								},
+								{
+									"internalType": "address",
+									"name": "contractAddress",
+									"type": "address"
+								},
+								{
+									"internalType": "uint256",
+									"name": "value",
+									"type": "uint256"
+								},
+								{
+									"internalType": "uint256",
+									"name": "id",
+									"type": "uint256"
+								}
+							],
+							"internalType": "struct LibAsset.Asset",
+							"name": "takeAsset",
+							"type": "tuple"
+						},
+						{
+							"internalType": "uint256",
+							"name": "salt",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "start",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "end",
+							"type": "uint256"
+						},
+						{
+							"components": [
+								{
+									"internalType": "address",
+									"name": "receiver",
+									"type": "address"
+								},
+								{
+									"internalType": "uint256",
+									"name": "amount",
+									"type": "uint256"
+								}
+							],
+							"internalType": "struct LibOrder.Fee",
+							"name": "originFee",
+							"type": "tuple"
+						},
+						{
+							"components": [
+								{
+									"internalType": "address",
+									"name": "receiver",
+									"type": "address"
+								},
+								{
+									"internalType": "uint256",
+									"name": "amount",
+									"type": "uint256"
+								}
+							],
+							"internalType": "struct LibOrder.Fee",
+							"name": "royaltyFee",
+							"type": "tuple"
+						},
+						{
+							"internalType": "bytes",
+							"name": "sig",
+							"type": "bytes"
+						},
+						{
+							"internalType": "bytes32",
+							"name": "root",
+							"type": "bytes32"
+						},
+						{
+							"internalType": "bytes32[]",
+							"name": "proof",
+							"type": "bytes32[]"
+						},
+						{
+							"internalType": "uint16",
+							"name": "index",
+							"type": "uint16"
+						}
+					],
+					"internalType": "struct LibOrder.Order",
+					"name": "order",
+					"type": "tuple"
+				}
+			],
+			"name": "validateListing",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "isValid",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "pure",
+			"type": "function"
+		}
+	]
+}

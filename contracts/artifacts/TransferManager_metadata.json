@@ -1,0 +1,404 @@
+{
+	"compiler": {
+		"version": "0.7.6+commit.7338295f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "oldValue",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newValue",
+						"type": "uint256"
+					}
+				],
+				"name": "BuyerFeeAmountChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "oldValue",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "newValue",
+						"type": "address"
+					}
+				],
+				"name": "FeeReceiverChanged",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "oldValue",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "newValue",
+						"type": "uint256"
+					}
+				],
+				"name": "SellerFeeAmountChanged",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "_owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "protocolFee",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "receiver",
+						"type": "address"
+					},
+					{
+						"internalType": "uint48",
+						"name": "buyerAmount",
+						"type": "uint48"
+					},
+					{
+						"internalType": "uint48",
+						"name": "sellerAmount",
+						"type": "uint48"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "renounceOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "royaltiesRegistry",
+				"outputs": [
+					{
+						"internalType": "contract IRoyaltiesProvider",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_receiver",
+						"type": "address"
+					},
+					{
+						"internalType": "uint48",
+						"name": "_buyerAmount",
+						"type": "uint48"
+					},
+					{
+						"internalType": "uint48",
+						"name": "_sellerAmount",
+						"type": "uint48"
+					}
+				],
+				"name": "setAllProtocolFeeData",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint48",
+						"name": "_buyerAmount",
+						"type": "uint48"
+					}
+				],
+				"name": "setPrtocolFeeBuyerAmount",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_receiver",
+						"type": "address"
+					}
+				],
+				"name": "setPrtocolFeeReceiver",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint48",
+						"name": "_sellerAmount",
+						"type": "uint48"
+					}
+				],
+				"name": "setPrtocolFeeSellerAmount",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract IRoyaltiesProvider",
+						"name": "newRoyaltiesRegistry",
+						"type": "address"
+					}
+				],
+				"name": "setRoyaltiesRegistry",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"events": {
+				"BuyerFeeAmountChanged(uint256,uint256)": {
+					"details": "event that's emitted when ProtocolFeeData buyerAmount changes"
+				},
+				"FeeReceiverChanged(address,address)": {
+					"details": "event that's emitted when ProtocolFeeData receiver changes"
+				},
+				"SellerFeeAmountChanged(uint256,uint256)": {
+					"details": "event that's emitted when ProtocolFeeData sellerAmount changes"
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"renounceOwnership()": {
+					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/TransferManager.sol": "TransferManager"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/AddressUpgradeable.sol": {
+			"keccak256": "0x9e8ebda6384f3a6baa6a233b778ee46516550908bbf55bc8a45e709240d4d2ef",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f11c8cfa69ee457a1c7fe4b30fba330f80fa9a774979d95270b9bc020b3632ca",
+				"dweb:/ipfs/QmckYcPMSJU9GDA2sxMr39B3uQLT5wyqHRN1uzubfW6zRG"
+			]
+		},
+		"contracts/ContextUpgradeable.sol": {
+			"keccak256": "0xc4d9a6ef5626b464d3dc2ede69fa402cfd1eff902986e8146687c951db6afab5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://bac8cc3fcf10245712ea5ccb1730008ff0e8f9671cf27f57e78956da3a76f230",
+				"dweb:/ipfs/QmcbRdV2tDMBLNc6TjEg6r2Q9dQ8JVyUCnmXbMGAxcs87C"
+			]
+		},
+		"contracts/Hashes.sol": {
+			"keccak256": "0xec937e5d8295c4b2ad9e093edad82b1072f2cf96a81c219f3fa7e4569965d2e4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://52f9dc5e1e94e262cd236050502fcc31bbb0ad45ffb21ac918d7feb930ca5730",
+				"dweb:/ipfs/QmSL3LUe25NYN2bcF6U49HG3DUP7csprx294Fw2Qz33c4o"
+			]
+		},
+		"contracts/Initializable.sol": {
+			"keccak256": "0xe804238dc115701cf2371864637cc5ed3fe0496d92edc6992b573e74f77afe90",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://cf30e2e85fbc89ef3d057444c98dbb2850756147bf0d960b16bdf50df8786c1d",
+				"dweb:/ipfs/QmUdPCNPauEjQ9NEj9rUD1smLq5bZHay3YcVVkV3WtRBGt"
+			]
+		},
+		"contracts/OwnableUpgradeable.sol": {
+			"keccak256": "0xcbe494f8c6279736ea8f92e2a414fbe9979baaf4f5369e995c2d8355be3e4417",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://573281b7792175f2038ab283510306378fb87ab4278771fa5c90b5b131e7c9b0",
+				"dweb:/ipfs/QmYBXXwJXyWfYx4gHQ3oXaZWMRwUH3nPPQvBuinhBimEfQ"
+			]
+		},
+		"contracts/SafeMathUpgradeable.sol": {
+			"keccak256": "0x347bc383ab4458cc4c63cbafcad04a73fa20b8452b9d6e7b7de1f1f2a9ddf95e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://1481ef949ea2d22612f8f926277c29b8be74c3cc3a49ac75cf430968064dd024",
+				"dweb:/ipfs/QmNaAgpzWbCu1NCyqdeFmT1SEqnk59y4w17FZW3DuLvLpN"
+			]
+		},
+		"contracts/TransferManager.sol": {
+			"keccak256": "0xfa228d116108c7eb158c44f9e591e74e5bb9a1726ba514547410f9c30e8551a4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://288699449b5dfcae70c6b2d9d84f4a07107cb07a00aced24235e4ae07b9fb3ce",
+				"dweb:/ipfs/QmaavEV8xZB7vBmAY4J1RirFB43AZQn3mE9mRT1veip8bs"
+			]
+		},
+		"contracts/interface/IRoyaltiesProvider.sol": {
+			"keccak256": "0x4006c90467bd9bf9fc916c6362799d4df4c1e9d3df6e4bcc4a589ff2edd0fb5b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0d4836515cb27a259115952df730bddc6ff26aa8510efdd4c60c86852f1fd92a",
+				"dweb:/ipfs/QmUGJ59rYDB3F2qYj3upRNMC4MTvBG5Jz8Sf3HfzgQEVu6"
+			]
+		},
+		"contracts/interface/ITransferExecutor.sol": {
+			"keccak256": "0xa6c2551eb4a002744ae13ce11c9515bb05b59f256556b96a82b3b94ac5b1415e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ebac429f0f3c503e4f5598f1072fa02a30c3ff4a63c555fee5dbf14a1807449c",
+				"dweb:/ipfs/QmdmohkweQfpfmvZFzmWNU2m89HyZDdd2mG7V6uVvfS37s"
+			]
+		},
+		"contracts/interface/ITransferManager.sol": {
+			"keccak256": "0xde08b627391dccb795f46116bcc99ae17d709ea5e356c60d0bd4337446b42acc",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://59590b2b12473b398a2661ab58164eef47a4ebc10377e82dc58d171dee8aafc6",
+				"dweb:/ipfs/QmXgHNhWDQVVbYgTZvGznV3UiScYHBxFEHxsMXVgbXQwTV"
+			]
+		},
+		"contracts/library/BpLibrary.sol": {
+			"keccak256": "0x331e37f04ca677dd2941aff2fec984ed3f39fe705dc57eefda4b820cc21d3299",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://42d2a72ef33c97040c929b4443e680d8b25486252fbf53cd24964adfb622906a",
+				"dweb:/ipfs/QmSJqFKNGNdjEcFUKbRoZWTKY1GEbYHvcVmf1SzDRwDK6Q"
+			]
+		},
+		"contracts/library/LibAsset.sol": {
+			"keccak256": "0xb2c9d90409b6dc28cd6acace407206fd6a87add96723e8b69540f27b7b56a06c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://fa73991461a9244db4e7e0aa85be44fb9251d9aca586bc267a5a3fa359ab9111",
+				"dweb:/ipfs/QmNayJGhzy1Zgz4JVFv4EaY4Hry5PHqGDgf4QQ3yeGL6sL"
+			]
+		},
+		"contracts/library/LibDeal.sol": {
+			"keccak256": "0xd5e98e6f1665fc440b013dff2e1c8f10b491e45b6c0e1ff4fb224ad1bf4cfb22",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d7575e1ef673f9463b0174a2af5465ac0a8310c9302200610d75a007e29c917d",
+				"dweb:/ipfs/QmXH1DT5BMhtssD28j1ATz9mjBfp9EXPXQwt5C8KYMR3Bf"
+			]
+		},
+		"contracts/library/LibPart.sol": {
+			"keccak256": "0xcb5f27f2bb23b9c0db70c41955579692eda509ccef6ae6619f225ee30bbf7b9f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://33bd590ee1dbaa0d769b1fe8ca5a89199866a7cdb4927d82bd22e1dcc6e69701",
+				"dweb:/ipfs/QmSgvKSeWSAq9fgNCuNtBbQooArz3wkYh1FCQ2k7FzLwyU"
+			]
+		}
+	},
+	"version": 1
+}

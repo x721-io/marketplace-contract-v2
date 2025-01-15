@@ -1,0 +1,99 @@
+{
+	"compiler": {
+		"version": "0.7.6+commit.7338295f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint8",
+								"name": "assetType",
+								"type": "uint8"
+							},
+							{
+								"internalType": "address",
+								"name": "contractAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "value",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct LibAsset.Asset",
+						"name": "asset",
+						"type": "tuple"
+					},
+					{
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					}
+				],
+				"name": "transfer",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/interface/ITransferProxy.sol": "ITransferProxy"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/interface/ITransferProxy.sol": {
+			"keccak256": "0x4f459a295a290406256a0c188e8db364504b6deebcde90e32cd2dd6d768eedad",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://092e3547ea9bbfbd91b84bbd6f0c6e173424aa5fc17be775b456e916b60baa08",
+				"dweb:/ipfs/QmWVsEjJzytXAnPn36qCTYc3yWFTAVSxnpdpq3p9fjGctv"
+			]
+		},
+		"contracts/library/LibAsset.sol": {
+			"keccak256": "0xb2c9d90409b6dc28cd6acace407206fd6a87add96723e8b69540f27b7b56a06c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://fa73991461a9244db4e7e0aa85be44fb9251d9aca586bc267a5a3fa359ab9111",
+				"dweb:/ipfs/QmNayJGhzy1Zgz4JVFv4EaY4Hry5PHqGDgf4QQ3yeGL6sL"
+			]
+		}
+	},
+	"version": 1
+}

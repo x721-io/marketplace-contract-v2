@@ -1,0 +1,82 @@
+{
+	"compiler": {
+		"version": "0.7.6+commit.7338295f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "contract IERC20Upgradeable",
+						"name": "token",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "erc20safeTransferFrom",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/interface/IERC20TransferProxy.sol": "IERC20TransferProxy"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/interface/IERC20TransferProxy.sol": {
+			"keccak256": "0xa9c5cf639254504883c1c67037daf2ee0c5b7bf132d9528f6d70073a61ee720b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://98c4261c21d435bf7fb124c32f3a34e2b8d7c880a699a02ecd216aaf685a6835",
+				"dweb:/ipfs/QmQzUeQFrGrfXdhZLVqGzpgydfeo5FCXMpocRHgoF7Hh4D"
+			]
+		},
+		"contracts/interface/IERC20Upgradeable.sol": {
+			"keccak256": "0xbf43ea17d029abc52528d97cb2b6c7e404369cc9c4276801c2bcbd634fac6479",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://26aee18e3ef9c99956b648cd7aae30359430ae5e014f9b715db76fd504e39a28",
+				"dweb:/ipfs/Qma1wSGw4mU5qCjqn3qAUWYiygf5WdXhKs7xPFdmnnmaJJ"
+			]
+		}
+	},
+	"version": 1
+}
