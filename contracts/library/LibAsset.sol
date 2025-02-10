@@ -55,12 +55,11 @@ library LibAsset {
             keccak256(
                 abi.encode(
                     keccak256(
-                        "Asset(uint8 assetType,address contractAddress,uint256 value,uint256 id)"
+                        "CollectionAsset(uint8 assetType,address contractAddress,uint256 value)"
                     ),
                     asset.assetType,
                     asset.contractAddress,
-                    asset.value,
-                    asset.id
+                    asset.value
                 )
             );
     }

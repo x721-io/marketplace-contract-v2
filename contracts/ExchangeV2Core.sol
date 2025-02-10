@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.7.6;
+pragma solidity <0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0;
 pragma abicoder v2;
 
 import "../contracts/Initializable.sol";
@@ -23,12 +23,13 @@ abstract contract ExchangeV2Core is
     using LibTransfer for address;
 
     uint256 private constant UINT256_MAX = type(uint256).max;
-    uint randNonce = 0;
+    uint256 private randNonce = 0;
 
+    // State of the orders
     mapping(bytes32 => uint256) public fills;
-    mapping(address => mapping(bytes => mapping(uint16 => uint256)))
-        private cancelledOrFiledOrders;
+    mapping(address => mapping(bytes => mapping(uint16 => uint256))) private cancelledOrFiledOrders;
 
+    // Events
     event Cancel(bytes32 hash);
     event CancelOrder(address maker, bytes sig, uint16 index);
     event FillOrder(
@@ -51,12 +52,7 @@ abstract contract ExchangeV2Core is
 
     function randMod() internal returns (uint256) {
         randNonce++;
-        return
-            uint256(
-                keccak256(
-                    abi.encodePacked(block.timestamp, msg.sender, randNonce)
-                )
-            );
+        return uint256(keccak256(abi.encodePacked(block.timestamp, msg.sender, randNonce)));
     }
 
     function cancel(LibOrder.Order memory order) external {
@@ -69,25 +65,18 @@ abstract contract ExchangeV2Core is
 
     function cancelOrder(LibOrder.Order memory order) external {
         require(_msgSender() == order.maker, "not a maker");
-        cancelledOrFiledOrders[_msgSender()][order.sig][order.index] = order
-            .makeAsset
-            .value;
+        cancelledOrFiledOrders[_msgSender()][order.sig][order.index] = order.makeAsset.value;
         emit CancelOrder(_msgSender(), order.sig, order.index);
     }
 
-    function directAcceptBid(
-        LibDirectTransfer.AcceptBid calldata direct
-    ) external payable {
+    function directAcceptBid(LibDirectTransfer.AcceptBid calldata direct) external payable {
         LibOrder.Order memory bidOrder = direct.bidOrder;
         LibOrder.Order memory sellOrder = direct.sellOrder;
 
         uint256 maxBidTakeAssetQty = bidOrder.takeAsset.value;
         uint256 acceptBidMakeAssetQty = sellOrder.makeAsset.value;
 
-        require(
-            acceptBidMakeAssetQty <= maxBidTakeAssetQty,
-            "Accept bid qty higher than bid qty"
-        );
+        require(acceptBidMakeAssetQty <= maxBidTakeAssetQty, "Accept bid qty higher than bid qty");
 
         validateFull(bidOrder, bidOrder.sig);
         validateFull(sellOrder, sellOrder.sig);
@@ -95,10 +84,7 @@ abstract contract ExchangeV2Core is
         uint256 bidPricePerUnit = bidOrder.makeAsset.value / maxBidTakeAssetQty;
         uint256 totalBidPrice = bidPricePerUnit * acceptBidMakeAssetQty;
 
-        require(
-            totalBidPrice <= bidOrder.makeAsset.value,
-            "Bid ERC-20 amount not enough"
-        );
+        require(totalBidPrice <= bidOrder.makeAsset.value, "Bid ERC-20 amount not enough");
 
         bidOrder.makeAsset.value = totalBidPrice;
         bidOrder.takeAsset.value = acceptBidMakeAssetQty;
@@ -107,32 +93,26 @@ abstract contract ExchangeV2Core is
         sellOrder.makeAsset.value = maxBidTakeAssetQty;
         sellOrder.takeAsset.value = totalBidPrice;
 
-        uint256 currentFilledAmt = cancelledOrFiledOrders[bidOrder.maker][
-            bidOrder.sig
-        ][bidOrder.index];
+        uint256 currentFilledAmt = cancelledOrFiledOrders[bidOrder.maker][bidOrder.sig][bidOrder.index];
 
         validateTakeAssetAmount(sellOrder, bidOrder);
         matchAndTransfer(sellOrder, bidOrder, currentFilledAmt);
     }
 
-    function matchOrders(
-        LibOrder.Order[] memory orderLefts,
-        LibOrder.Order[] memory orderRights
-    ) external payable {
-        require(
-            orderLefts.length == orderRights.length,
-            "lefts and rights length dont match"
-        );
+    function matchOrders(LibOrder.Order[] memory orderLefts, LibOrder.Order[] memory orderRights) external payable {
+        require(orderLefts.length == orderRights.length, "lefts and rights length dont match");
 
         for (uint256 i = 0; i < orderLefts.length; i++) {
             LibOrder.Order memory orderLeft = orderLefts[i];
             LibOrder.Order memory orderRight = orderRights[i];
-            uint256 currentFilledAmt = cancelledOrFiledOrders[orderLeft.maker][
-                orderLeft.sig
-            ][orderLeft.index];
+            uint256 currentFilledAmt = cancelledOrFiledOrders[orderLeft.maker][orderLeft.sig][orderLeft.index];
 
-            validateBulkOrder(orderLeft);
-            validateBulkOrder(orderRight);
+            if (orderLeft.orderType == LibOrder.OrderType.BULK) {
+                require(validateListing(orderLeft.root, orderLeft.proof, orderLeft), "Invalid listing");
+            }
+            if (orderRight.orderType == LibOrder.OrderType.BULK) {
+                require(validateListing(orderRight.root, orderRight.proof, orderRight), "Invalid listing");
+            }
 
             validateTakeAssetAmount(orderLeft, orderRight);
             validateOrders(orderLeft, orderRight);
@@ -140,104 +120,60 @@ abstract contract ExchangeV2Core is
         }
     }
 
-    function validateBulkOrder(LibOrder.Order memory order) internal view {
-        if (order.orderType == LibOrder.OrderType.BULK) {
-            bool isValidListing = validateListing(
-                order.root,
-                order.proof,
-                order
-            );
-            require(isValidListing, "Invalid listing");
+    function validateTakeAssetAmount(LibOrder.Order memory orderLeft, LibOrder.Order memory orderRight) internal view {
+        uint256 currentFilledAmt = cancelledOrFiledOrders[orderLeft.maker][orderLeft.sig][orderLeft.index];
+        if (orderLeft.makeAsset.assetType == 3) {
+            require(cancelledOrFiledOrders[orderLeft.maker][orderLeft.sig][orderLeft.index] == 0, "Order has been cancelled");
+        }
+        if (orderLeft.makeAsset.assetType == 4) {
+            require(orderLeft.makeAsset.value >= currentFilledAmt + orderRight.takeAsset.value, "Order has been fulfilled");
         }
     }
 
-    function validateOrders(
-        LibOrder.Order memory orderLeft,
-        LibOrder.Order memory orderRight
-    ) internal view {
+    function validateOrders(LibOrder.Order memory orderLeft, LibOrder.Order memory orderRight) internal view {
         validateFull(orderLeft, orderLeft.sig);
         validateFull(orderRight, orderRight.sig);
 
-        if (orderLeft.taker != address(0) && orderRight.maker != address(0)) {
-            require(
-                orderRight.maker == orderLeft.taker,
-                "leftOrder.taker verification failed"
-            );
+        if (orderLeft.taker != address(0)) {
+            require(orderRight.maker == orderLeft.taker, "leftOrder.taker verification failed");
         }
-        if (orderRight.taker != address(0) && orderLeft.maker != address(0)) {
-            require(
-                orderRight.taker == orderLeft.maker,
-                "rightOrder.taker verification failed"
-            );
+        if (orderRight.taker != address(0)) {
+            require(orderRight.taker == orderLeft.maker, "rightOrder.taker verification failed");
         }
 
-        validateAssetMatching(orderLeft, orderRight);
-    }
+        if (orderLeft.makeAsset.assetType == 3 || orderLeft.makeAsset.assetType == 4) {
+            uint256 takeQty = orderRight.takeAsset.value;
+            uint256 pricePerUnit = orderLeft.takeAsset.value;
+            uint256 makeValue = orderRight.makeAsset.assetType == 2 ? orderRight.makeAsset.value : msg.value;
 
-    function validateAssetMatching(
-        LibOrder.Order memory orderLeft,
-        LibOrder.Order memory orderRight
-    ) internal view {
-        validateAssetAmount(
-            orderLeft,
-            orderRight,
-            orderRight.takeAsset.value,
-            orderLeft.takeAsset.value
-        );
-        validateAssetAmount(
-            orderRight,
-            orderLeft,
-            orderLeft.takeAsset.value,
-            orderRight.takeAsset.value
-        );
-    }
-
-    function validateAssetAmount(
-        LibOrder.Order memory order,
-        LibOrder.Order memory counterpartOrder,
-        uint256 takeQty,
-        uint256 pricePerUnit
-    ) internal view {
-        uint256 makeValue = order.makeAsset.assetType == 2
-            ? order.makeAsset.value
-            : msg.value;
-        if (order.makeAsset.assetType == 2) {
-            uint256 erc20Balance = IERC20Upgradeable(
-                order.makeAsset.contractAddress
-            ).balanceOf(order.maker);
-            require(
-                erc20Balance >= takeQty * pricePerUnit,
-                "ERC20 balance not enough"
-            );
+            if (orderRight.makeAsset.assetType == 2) {
+                uint256 erc20Balance = IERC20Upgradeable(orderRight.makeAsset.contractAddress).balanceOf(orderRight.maker);
+                require(erc20Balance >= takeQty * pricePerUnit, "ERC20 balance not enough");
+            }
+            require(takeQty * pricePerUnit <= makeValue, "Spending amount not enough");
         }
-        require(
-            takeQty * pricePerUnit <= makeValue,
-            "Spending amount not enough"
-        );
+
+        if (orderRight.makeAsset.assetType == 3 || orderRight.makeAsset.assetType == 4) {
+            uint256 takeQty = orderLeft.takeAsset.value;
+            uint256 pricePerUnit = orderRight.takeAsset.value;
+            uint256 makeValue = orderLeft.makeAsset.assetType == 2 ? IERC20Upgradeable(orderLeft.makeAsset.contractAddress).balanceOf(orderLeft.maker) : msg.value;
+
+            if (orderLeft.makeAsset.assetType == 2) {
+                uint256 erc20Balance = IERC20Upgradeable(orderLeft.makeAsset.contractAddress).balanceOf(orderLeft.maker);
+                require(erc20Balance >= takeQty * pricePerUnit, "ERC20 balance not enough");
+            }
+            require(takeQty * pricePerUnit <= makeValue, "Spending amount not enough");
+        }
     }
 
-    function matchAndTransfer(
-        LibOrder.Order memory orderLeft,
-        LibOrder.Order memory orderRight,
-        uint256 currentFilledAmt
-    ) internal {
-        (
-            LibAsset.Asset memory makeMatch,
-            LibAsset.Asset memory takeMatch
-        ) = matchAssets(orderLeft, orderRight, currentFilledAmt);
+    function matchAndTransfer(LibOrder.Order memory orderLeft, LibOrder.Order memory orderRight, uint256 currentFilledAmt) internal {
+        (LibAsset.Asset memory makeMatch, LibAsset.Asset memory takeMatch) = matchAssets(orderLeft, orderRight, currentFilledAmt);
 
         transferAssets(orderLeft, orderRight, makeMatch, takeMatch);
 
-        LibOrder.Order memory makeOrder = orderLeft.orderType ==
-            LibOrder.OrderType.BID
-            ? orderRight
-            : orderLeft;
-        uint256 newFilledValue = cancelledOrFiledOrders[makeOrder.maker][
-            makeOrder.sig
-        ][makeOrder.index] + orderRight.takeAsset.value;
-        cancelledOrFiledOrders[makeOrder.maker][makeOrder.sig][
-            makeOrder.index
-        ] = newFilledValue;
+        LibOrder.Order memory makeOrder = orderLeft.orderType == LibOrder.OrderType.BID ? orderRight : orderLeft;
+        uint256 newFilledValue = cancelledOrFiledOrders[makeOrder.maker][makeOrder.sig][makeOrder.index] + orderRight.takeAsset.value;
+        cancelledOrFiledOrders[makeOrder.maker][makeOrder.sig][makeOrder.index] = newFilledValue;
 
         emit FillOrder(
             orderLeft.orderType,
@@ -252,173 +188,92 @@ abstract contract ExchangeV2Core is
         );
     }
 
-    function transferAssets(
-        LibOrder.Order memory orderLeft,
-        LibOrder.Order memory orderRight,
-        LibAsset.Asset memory makeMatch,
-        LibAsset.Asset memory takeMatch
-    ) internal {
+    function transferAssets(LibOrder.Order memory orderLeft, LibOrder.Order memory orderRight, LibAsset.Asset memory makeMatch, LibAsset.Asset memory takeMatch) internal {
         doTransfers(
-            createDealSide(orderLeft.maker, orderRight.maker, makeMatch),
-            createDealSide(orderRight.maker, orderLeft.maker, takeMatch)
+            LibDeal.DealSide({
+                asset: makeMatch,
+                proxy: proxies[uint8(makeMatch.assetType)],
+                from: orderLeft.maker,
+                to: orderRight.maker
+            }),
+            LibDeal.DealSide({
+                asset: takeMatch,
+                proxy: proxies[uint8(takeMatch.assetType)],
+                from: orderRight.maker,
+                to: orderLeft.maker
+            })
         );
 
         if (takeMatch.assetType == 1 || takeMatch.assetType == 2) {
-            uint256 feeAmt = calculateFee(
-                takeMatch.value,
-                orderLeft.originFee.amount
-            );
-            uint256 royaltyFeeAmt = calculateFee(
-                takeMatch.value,
-                orderLeft.royaltyFee.amount
-            );
+            require(orderLeft.makeAsset.assetType != takeMatch.assetType);
+            uint256 feeAmt = (takeMatch.value * orderLeft.originFee.amount) / 10000;
+            uint256 royaltyFeeAmt = (takeMatch.value * orderLeft.royaltyFee.amount) / 10000;
             uint256 receivedAmt = takeMatch.value - feeAmt - royaltyFeeAmt;
 
-            transferAssetWithFees(
-                takeMatch,
-                receivedAmt,
-                feeAmt,
-                royaltyFeeAmt,
-                orderLeft,
-                orderRight
-            );
+            transfer(LibAsset.Asset(takeMatch.assetType, takeMatch.contractAddress, receivedAmt, takeMatch.id), orderRight.maker, orderLeft.maker, proxies[uint8(takeMatch.assetType)]);
+            transfer(LibAsset.Asset(takeMatch.assetType, takeMatch.contractAddress, feeAmt, takeMatch.id), orderRight.maker, address(this), proxies[uint8(takeMatch.assetType)]);
+            transfer(LibAsset.Asset(takeMatch.assetType, takeMatch.contractAddress, royaltyFeeAmt, takeMatch.id), orderRight.maker, orderLeft.royaltyFee.receiver, proxies[uint8(takeMatch.assetType)]);
         } else {
-            uint256 feeAmt = calculateFee(
-                makeMatch.value,
-                orderRight.originFee.amount
-            );
-            uint256 royaltyFeeAmt = calculateFee(
-                makeMatch.value,
-                orderRight.royaltyFee.amount
-            );
+            require(orderRight.makeAsset.assetType != makeMatch.assetType);
+            uint256 feeAmt = (makeMatch.value * orderRight.originFee.amount) / 10000;
+            uint256 royaltyFeeAmt = (makeMatch.value * orderRight.royaltyFee.amount) / 10000;
             uint256 receivedAmt = makeMatch.value - feeAmt - royaltyFeeAmt;
 
-            transferAssetWithFees(
-                makeMatch,
-                receivedAmt,
-                feeAmt,
-                royaltyFeeAmt,
-                orderRight,
-                orderLeft
-            );
+            transfer(LibAsset.Asset(makeMatch.assetType, makeMatch.contractAddress, receivedAmt, makeMatch.id), orderLeft.maker, orderRight.maker, proxies[uint8(makeMatch.assetType)]);
+            transfer(LibAsset.Asset(makeMatch.assetType, makeMatch.contractAddress, feeAmt, makeMatch.id), orderLeft.maker, address(this), proxies[uint8(makeMatch.assetType)]);
+            transfer(LibAsset.Asset(makeMatch.assetType, makeMatch.contractAddress, royaltyFeeAmt, makeMatch.id), orderLeft.maker, orderRight.royaltyFee.receiver, proxies[uint8(makeMatch.assetType)]);
         }
     }
 
-    function createDealSide(
-        address from,
-        address to,
-        LibAsset.Asset memory asset
-    ) internal view returns (LibDeal.DealSide memory) {
-        return
-            LibDeal.DealSide({
-                asset: asset,
-                proxy: proxies[uint8(asset.assetType)],
-                from: from,
-                to: to
-            });
-    }
-
-    function calculateFee(
-        uint256 value,
-        uint256 feeAmount
-    ) internal pure returns (uint256) {
-        return (value * feeAmount) / 10000;
-    }
-
-    function transferAssetWithFees(
-        LibAsset.Asset memory asset,
-        uint256 receivedAmt,
-        uint256 feeAmt,
-        uint256 royaltyFeeAmt,
+    function setFillEmitMatch(
         LibOrder.Order memory orderLeft,
-        LibOrder.Order memory orderRight
-    ) internal {
-        transfer(
-            asset,
-            orderRight.maker,
-            orderLeft.maker,
-            proxies[uint8(asset.assetType)]
-        );
-        transfer(
-            asset,
-            orderRight.maker,
-            address(this),
-            proxies[uint8(asset.assetType)]
-        );
-        transfer(
-            asset,
-            orderRight.maker,
-            orderLeft.royaltyFee.receiver,
-            proxies[uint8(asset.assetType)]
-        );
+        LibOrder.Order memory orderRight,
+        bytes32 leftOrderKeyHash,
+        bytes32 rightOrderKeyHash,
+        bool leftMakeFill,
+        bool rightMakeFill
+    ) internal returns (LibFill.FillResult memory) {
+        uint256 leftOrderFill = getOrderFill(orderLeft.salt, leftOrderKeyHash);
+        uint256 rightOrderFill = getOrderFill(orderRight.salt, rightOrderKeyHash);
+        LibFill.FillResult memory newFill = LibFill.fillOrder(orderLeft, orderRight, leftOrderFill, rightOrderFill, leftMakeFill, rightMakeFill);
+
+        require(newFill.leftValue > 0 || newFill.rightValue > 0, "nothing to fill");
+
+        if (orderLeft.salt != 0) {
+            fills[leftOrderKeyHash] = leftOrderFill.add(leftMakeFill ? newFill.leftValue : newFill.rightValue);
+        }
+
+        if (orderRight.salt != 0) {
+            fills[rightOrderKeyHash] = rightOrderFill.add(rightMakeFill ? newFill.rightValue : newFill.leftValue);
+        }
+
+        emit Match(leftOrderKeyHash, rightOrderKeyHash, newFill.rightValue, newFill.leftValue);
+
+        return newFill;
+    }
+
+    function getOrderFill(uint256 salt, bytes32 hash) internal view returns (uint256 fill) {
+        return salt == 0 ? 0 : fills[hash];
     }
 
     function matchAssets(
         LibOrder.Order memory orderLeft,
         LibOrder.Order memory orderRight,
         uint256 currentFilledAmt
-    )
-        internal
-        view
-        returns (
-            LibAsset.Asset memory makeMatch,
-            LibAsset.Asset memory takeMatch
-        )
-    {
-        makeMatch = matchAssets(
-            orderLeft.makeAsset,
-            orderRight.takeAsset,
-            currentFilledAmt
-        );
+    ) internal view returns (LibAsset.Asset memory makeMatch, LibAsset.Asset memory takeMatch) {
+        makeMatch = matchAssets(orderLeft.makeAsset, orderRight.takeAsset, currentFilledAmt);
         require(makeMatch.assetType != 0, "assets don't match");
-
-        takeMatch = matchAssets(
-            orderLeft.takeAsset,
-            orderRight.makeAsset,
-            currentFilledAmt
-        );
+        takeMatch = matchAssets(orderLeft.takeAsset, orderRight.makeAsset, currentFilledAmt);
         require(takeMatch.assetType != 0, "assets don't match");
     }
 
-    function getPaymentAssetType(
-        address token
-    ) internal pure returns (LibAsset.PaymentAsset memory) {
-        return
-            token == address(0)
-                ? LibAsset.PaymentAsset(1, address(0))
-                : LibAsset.PaymentAsset(2, token);
-    }
-
-    function validateFull(
-        LibOrder.Order memory order,
-        bytes memory signature
-    ) internal view {
+    function validateFull(LibOrder.Order memory order, bytes memory signature) internal view {
         LibOrder.validateOrderTime(order);
-
         validate(order, signature);
     }
 
-    function validateTakeAssetAmount(
-        LibOrder.Order memory orderLeft,
-        LibOrder.Order memory orderRight
-    ) internal view {
-        // Retrieve the current filled amount once to avoid multiple lookups
-        uint256 currentFilledAmt = cancelledOrFiledOrders[orderLeft.maker][
-            orderLeft.sig
-        ][orderLeft.index];
-
-        // Check if the order is cancelled (assetType == 3)
-        if (orderLeft.makeAsset.assetType == 3) {
-            require(currentFilledAmt == 0, "Order has been cancelled");
-        }
-        // Check if the order is fulfilled (assetType == 4)
-        else if (orderLeft.makeAsset.assetType == 4) {
-            require(
-                orderLeft.makeAsset.value >=
-                    currentFilledAmt + orderRight.takeAsset.value,
-                "Order has been fulfilled"
-            );
-        }
+    function getPaymentAssetType(address token) internal pure returns (LibAsset.PaymentAsset memory) {
+        return LibAsset.PaymentAsset({assetType: int8(token == address(0) ? 1 : 2), contractAddress: token});
     }
 
     uint256[49] private __gap;

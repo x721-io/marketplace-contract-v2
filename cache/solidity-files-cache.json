@@ -1546,6 +1546,1552 @@
       "artifacts": [
         "IERC1271"
       ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/AddressUpgradeable.sol": {
+      "lastModificationDate": 1736906267948,
+      "contentHash": "e35af32472142c5ff55b100fcbca92f1",
+      "sourceName": "contracts/AddressUpgradeable.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../contracts/Hashes.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "AddressUpgradeable"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/Hashes.sol": {
+      "lastModificationDate": 1736906267947,
+      "contentHash": "ee828e99bedff622aa38ceeec59df704",
+      "sourceName": "contracts/Hashes.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "Hashes"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/Initializable.sol": {
+      "lastModificationDate": 1736906267874,
+      "contentHash": "d6a1007afc3ec4f23847ff73940a3294",
+      "sourceName": "contracts/Initializable.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../contracts/AddressUpgradeable.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "Initializable"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/TransferExecutor.sol": {
+      "lastModificationDate": 1736906267923,
+      "contentHash": "b5749f4a7ee88941e22c8c490065bec0",
+      "sourceName": "contracts/TransferExecutor.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../contracts/Initializable.sol",
+        "../contracts/OwnableUpgradeable.sol",
+        "../contracts/MerkleProof.sol",
+        "../contracts/library/LibTransfer.sol",
+        "../contracts/library/LibOrder.sol",
+        "../contracts/interface/ITransferExecutor.sol",
+        "../contracts/interface/IERC721Upgradeable.sol",
+        "../contracts/interface/IERC20Upgradeable.sol",
+        "../contracts/interface/IERC20TransferProxy.sol",
+        "../contracts/interface/INftTransferProxy.sol",
+        "../contracts/interface/ITransferProxy.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "TransferExecutor"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/OwnableUpgradeable.sol": {
+      "lastModificationDate": 1736906267922,
+      "contentHash": "c49367396e2e3ce7939337b5e1861185",
+      "sourceName": "contracts/OwnableUpgradeable.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../contracts/Initializable.sol",
+        "../contracts/ContextUpgradeable.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "OwnableUpgradeable"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/MerkleProof.sol": {
+      "lastModificationDate": 1736906267947,
+      "contentHash": "6af99afa6d2b524a63a4e4b341eac19a",
+      "sourceName": "contracts/MerkleProof.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../contracts/Hashes.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "MerkleProof"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/library/LibTransfer.sol": {
+      "lastModificationDate": 1736906267940,
+      "contentHash": "4961773b423b4459e94825135def0c52",
+      "sourceName": "contracts/library/LibTransfer.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "LibTransfer"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/library/LibOrder.sol": {
+      "lastModificationDate": 1739153491816,
+      "contentHash": "6078eee0401b927f35fcee708e7e109c",
+      "sourceName": "contracts/library/LibOrder.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../contracts/SafeMathUpgradeable.sol",
+        "../../contracts/library/LibAsset.sol",
+        "../../contracts/library/LibMath.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "LibOrder"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/interface/ITransferExecutor.sol": {
+      "lastModificationDate": 1736906267889,
+      "contentHash": "8684a0ce61fb016345a3a69a7c09a41c",
+      "sourceName": "contracts/interface/ITransferExecutor.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../contracts/library/LibAsset.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "ITransferExecutor"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/interface/IERC721Upgradeable.sol": {
+      "lastModificationDate": 1736906267887,
+      "contentHash": "8d2e35bd958a409a0e65fdd972ca8544",
+      "sourceName": "contracts/interface/IERC721Upgradeable.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../contracts/interface/IERC165Upgradeable.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "IERC721Upgradeable"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/interface/IERC20Upgradeable.sol": {
+      "lastModificationDate": 1736906267890,
+      "contentHash": "9bd45059d3cbcf0b6f7d43d5e96db8be",
+      "sourceName": "contracts/interface/IERC20Upgradeable.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "IERC20Upgradeable"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/interface/IERC20TransferProxy.sol": {
+      "lastModificationDate": 1736906267889,
+      "contentHash": "51e5a447452274960ab3ed57eb96e155",
+      "sourceName": "contracts/interface/IERC20TransferProxy.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../contracts/interface/IERC20Upgradeable.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "IERC20TransferProxy"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/interface/INftTransferProxy.sol": {
+      "lastModificationDate": 1736906267875,
+      "contentHash": "441d4b529a9ad2cd3f644c121fa7a2e9",
+      "sourceName": "contracts/interface/INftTransferProxy.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../contracts/interface/IERC721Upgradeable.sol",
+        "../../contracts/interface/IERC1155Upgradeable.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "INftTransferProxy"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/interface/ITransferProxy.sol": {
+      "lastModificationDate": 1736906267888,
+      "contentHash": "abc615634d0bb917d77be6b673862902",
+      "sourceName": "contracts/interface/ITransferProxy.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../contracts/library/LibAsset.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "ITransferProxy"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/ContextUpgradeable.sol": {
+      "lastModificationDate": 1736906267946,
+      "contentHash": "572a98fc651dadece67dcc813040eed6",
+      "sourceName": "contracts/ContextUpgradeable.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../contracts/Initializable.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "ContextUpgradeable"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/SafeMathUpgradeable.sol": {
+      "lastModificationDate": 1736906267946,
+      "contentHash": "56ee9c9107aa913d43c37ced52f6bd72",
+      "sourceName": "contracts/SafeMathUpgradeable.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "SafeMathUpgradeable"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/library/LibAsset.sol": {
+      "lastModificationDate": 1737171877105,
+      "contentHash": "5ea89d9db6fb8da389b3918014091df1",
+      "sourceName": "contracts/library/LibAsset.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "LibAsset"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/library/LibMath.sol": {
+      "lastModificationDate": 1736906267945,
+      "contentHash": "992dcc5ead1c0e565a02d5f62f15f56b",
+      "sourceName": "contracts/library/LibMath.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../contracts/SafeMathUpgradeable.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "LibMath"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/interface/IERC165Upgradeable.sol": {
+      "lastModificationDate": 1736906267888,
+      "contentHash": "9c2a9c4bee2ab6053d46be110cbde440",
+      "sourceName": "contracts/interface/IERC165Upgradeable.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "IERC165Upgradeable"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/interface/IERC1155Upgradeable.sol": {
+      "lastModificationDate": 1736906267875,
+      "contentHash": "02022a457c6ba859d6332b47907fb465",
+      "sourceName": "contracts/interface/IERC1155Upgradeable.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../contracts/interface/IERC165Upgradeable.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "IERC1155Upgradeable"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/library/artifacts/LibDirectTransfer.sol": {
+      "lastModificationDate": 1736906267927,
+      "contentHash": "af57a97608decb55bef05fa0cc6d20c0",
+      "sourceName": "contracts/library/artifacts/LibDirectTransfer.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../library/LibOrder.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "LibDirectTransfer"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/library/BpLibrary.sol": {
+      "lastModificationDate": 1736906267942,
+      "contentHash": "b8d0127988d186069b9e45b05c167d4e",
+      "sourceName": "contracts/library/BpLibrary.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../contracts/SafeMathUpgradeable.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "BpLibrary"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/TransferManager.sol": {
+      "lastModificationDate": 1736906267947,
+      "contentHash": "733dede9b9ba81e859f413d580c40b39",
+      "sourceName": "contracts/TransferManager.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../contracts/OwnableUpgradeable.sol",
+        "../contracts/interface/ITransferManager.sol",
+        "../contracts/interface/IRoyaltiesProvider.sol",
+        "../contracts/library/BpLibrary.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "TransferManager"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/interface/ITransferManager.sol": {
+      "lastModificationDate": 1736906267890,
+      "contentHash": "fd2346d231bf70bf3ef86fd5ad89381b",
+      "sourceName": "contracts/interface/ITransferManager.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../contracts/interface/ITransferExecutor.sol",
+        "../../contracts/library/LibDeal.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "ITransferManager"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/interface/IRoyaltiesProvider.sol": {
+      "lastModificationDate": 1736906267889,
+      "contentHash": "98feb92a77267573a4de78143b14e5fc",
+      "sourceName": "contracts/interface/IRoyaltiesProvider.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../contracts/library/LibPart.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "IRoyaltiesProvider"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/library/LibDeal.sol": {
+      "lastModificationDate": 1736906267940,
+      "contentHash": "d3cb4b7c778dcffca513ee23a255ddc8",
+      "sourceName": "contracts/library/LibDeal.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../contracts/library/LibAsset.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "LibDeal"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/library/LibPart.sol": {
+      "lastModificationDate": 1736906267944,
+      "contentHash": "e8dcd7ad759ad0e190e810a472f116e1",
+      "sourceName": "contracts/library/LibPart.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "LibPart"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/library/LibOrderData.sol": {
+      "lastModificationDate": 1736906267944,
+      "contentHash": "2441685010a1d49665b1df7bbe2f6838",
+      "sourceName": "contracts/library/LibOrderData.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../contracts/library/LibPart.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "LibOrderData"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/library/LibERC721LazyMint.sol": {
+      "lastModificationDate": 1736906267945,
+      "contentHash": "7f81883691d64fb531b52b56c91fcb13",
+      "sourceName": "contracts/library/LibERC721LazyMint.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../contracts/library/LibPart.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "LibERC721LazyMint"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/library/LibERC1155LazyMint.sol": {
+      "lastModificationDate": 1736906267943,
+      "contentHash": "2e630315061779f2fe8d2f93001146b7",
+      "sourceName": "contracts/library/LibERC1155LazyMint.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../contracts/library/LibPart.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "LibERC1155LazyMint"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/ExchangeV2.sol": {
+      "lastModificationDate": 1736906267922,
+      "contentHash": "f97ddd9c3ed205f67a74105e2c50a245",
+      "sourceName": "contracts/ExchangeV2.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../contracts/Initializable.sol",
+        "../contracts/OwnableUpgradeable.sol",
+        "../contracts/AssetMatcher.sol",
+        "../contracts/TransferExecutor.sol",
+        "../contracts/TransferManager.sol",
+        "../contracts/ExchangeV2Core.sol",
+        "../contracts/OrderValidator.sol",
+        "../contracts/library/LibPart.sol",
+        "../contracts/library/LibDirectTransfer.sol",
+        "../contracts/library/LibFill.sol",
+        "../contracts/interface/ITransferManager.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "ExchangeV2",
+        "LibOrderDataV1",
+        "LibOrderDataV2",
+        "LibOrderDataV3"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/AssetMatcher.sol": {
+      "lastModificationDate": 1736906267923,
+      "contentHash": "655da12b44a11d99c709319e12a469cc",
+      "sourceName": "contracts/AssetMatcher.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../contracts/Initializable.sol",
+        "../contracts/OwnableUpgradeable.sol",
+        "../contracts/interface/IAssetMatcher.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "AssetMatcher"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/ExchangeV2Core.sol": {
+      "lastModificationDate": 1739153066733,
+      "contentHash": "2d12ce9078390740412c812361842208",
+      "sourceName": "contracts/ExchangeV2Core.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../contracts/Initializable.sol",
+        "../contracts/OwnableUpgradeable.sol",
+        "../contracts/AssetMatcher.sol",
+        "../contracts/TransferExecutor.sol",
+        "../contracts/OrderValidator.sol",
+        "../contracts/library/LibDirectTransfer.sol",
+        "../contracts/library/LibFill.sol",
+        "../contracts/interface/ITransferManager.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "ExchangeV2Core"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/OrderValidator.sol": {
+      "lastModificationDate": 1739153399177,
+      "contentHash": "ffebb28e6e626889aeeaa686ce118a47",
+      "sourceName": "contracts/OrderValidator.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../contracts/Initializable.sol",
+        "../contracts/EIP712Upgradeable.sol",
+        "../contracts/ContextUpgradeable.sol",
+        "../contracts/library/LibSignature.sol",
+        "../contracts/library/LibOrder.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "OrderValidator"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/library/LibDirectTransfer.sol": {
+      "lastModificationDate": 1736906267942,
+      "contentHash": "18aaddf8ee586dc68ebf5efd926b173f",
+      "sourceName": "contracts/library/LibDirectTransfer.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../contracts/library/LibOrder.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "LibDirectTransfer"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/library/LibFill.sol": {
+      "lastModificationDate": 1736906267945,
+      "contentHash": "bccf2d65efa51ba8feba4f4c9a85bf11",
+      "sourceName": "contracts/library/LibFill.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../contracts/library/LibOrder.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "LibFill"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/interface/IAssetMatcher.sol": {
+      "lastModificationDate": 1736906267888,
+      "contentHash": "c069722d60416b96c7128381e71d7472",
+      "sourceName": "contracts/interface/IAssetMatcher.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../../contracts/library/LibAsset.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "IAssetMatcher"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/EIP712Upgradeable.sol": {
+      "lastModificationDate": 1736906267921,
+      "contentHash": "5daa5925852febbc362da58b5cc3988a",
+      "sourceName": "contracts/EIP712Upgradeable.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../contracts/Initializable.sol"
+      ],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "EIP712Upgradeable"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/library/LibSignature.sol": {
+      "lastModificationDate": 1736906267939,
+      "contentHash": "6a7b3bc07ada37e4a26fde4353f8764a",
+      "sourceName": "contracts/library/LibSignature.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "LibSignature"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/interface/IERC1271.sol": {
+      "lastModificationDate": 1736906267890,
+      "contentHash": "a6797967e060c38dde426003b472738c",
+      "sourceName": "contracts/interface/IERC1271.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "IERC1271"
+      ]
     }
   }
 }

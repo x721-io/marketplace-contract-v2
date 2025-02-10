@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT;
+// SPDX-License-Identifier: MIT
 pragma solidity <0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0;
 pragma abicoder v2;
 
@@ -8,11 +8,7 @@ import "../contracts/ContextUpgradeable.sol";
 import "../contracts/library/LibSignature.sol";
 import "../contracts/library/LibOrder.sol";
 
-abstract contract OrderValidator is
-    Initializable,
-    ContextUpgradeable,
-    EIP712Upgradeable
-{
+abstract contract OrderValidator is Initializable, ContextUpgradeable, EIP712Upgradeable {
     using LibSignature for bytes32;
     using AddressUpgradeable for address;
 
@@ -22,69 +18,22 @@ abstract contract OrderValidator is
         __EIP712_init_unchained("X721Exchange", "1");
     }
 
-    function validate(
-        LibOrder.Order memory order,
-        bytes memory signature
-    ) internal view {
+    function validate(LibOrder.Order memory order, bytes memory signature) internal view {
         if (order.salt == 0) {
-            if (order.maker != address(0)) {
-                require(_msgSender() == order.maker, "maker is not tx sender");
-            }
+            require(order.maker != address(0) && _msgSender() == order.maker, "maker is not tx sender");
         } else {
-            if (
-                order.orderType == LibOrder.OrderType.SINGLE ||
-                order.orderType == LibOrder.OrderType.BID
-            ) {
-                bytes32 hash = LibOrder.hash(order);
-                if (_msgSender() != order.maker) {
-                    // if maker is contract checking ERC1271 signature
-                    // if (order.maker.isContract()) {
-                    //     require(
-                    //         IERC1271(order.maker).isValidSignature(
-                    //             _hashTypedDataV4(hash),
-                    //             signature
-                    //         ) == MAGICVALUE,
-                    //         "contract order signature verification error"
-                    //     );
-                    if (
-                        _hashTypedDataV4(hash).recover(signature) != order.maker
-                    ) {
-                        revert("order signature verification error");
-                    } else {
-                        require(order.maker != address(0), "no maker");
-                    }
-                }
+            bytes32 hash;
+            if (order.orderType == LibOrder.OrderType.SINGLE || order.orderType == LibOrder.OrderType.BID) {
+                hash = LibOrder.hash(order);
             } else if (order.orderType == LibOrder.OrderType.BID_COLLECTION) {
-                bytes32 hash = LibOrder.hashCollection(order);
-                if (_msgSender() != order.maker) {
-                    // if maker is contract checking ERC1271 signature
-                    // if (order.maker.isContract()) {
-                    //     require(
-                    //         IERC1271(order.maker).isValidSignature(
-                    //             _hashTypedDataV4(hash),
-                    //             signature
-                    //         ) == MAGICVALUE,
-                    //         "contract order signature verification error"
-                    //     );
-                    if (
-                        _hashTypedDataV4(hash).recover(signature) != order.maker
-                    ) {
-                        revert("order signature verification error");
-                    } else {
-                        require(order.maker != address(0), "no maker");
-                    }
-                }
+                hash = LibOrder.hashCollection(order);
             } else {
-                if (_msgSender() != order.maker) {
-                    bytes32 hash = LibOrder.hashBulkOrder(order, order.root);
-                    if (
-                        _hashTypedDataV4(hash).recover(signature) != order.maker
-                    ) {
-                        revert("order signature verification error");
-                    } else {
-                        require(order.maker != address(0), "no maker");
-                    }
-                }
+                hash = LibOrder.hashBulkOrder(order, order.root);
+            }
+
+            if (_msgSender() != order.maker) {
+                require(_hashTypedDataV4(hash).recover(signature) == order.maker, "order signature verification error");
+                require(order.maker != address(0), "no maker");
             }
         }
     }
