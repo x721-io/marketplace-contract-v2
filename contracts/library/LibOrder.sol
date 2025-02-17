@@ -14,9 +14,9 @@ library LibOrder {
             "Order(address maker,Asset makeAsset,address taker,Asset takeAsset,uint256 salt,uint256 start,uint256 end,uint16 index)Asset(uint8 assetType,address contractAddress,uint256 value,uint256 id)"
         );
 
-            bytes32 constant COLLECTION_ORDER_TYPEHASH =
+    bytes32 constant COLLECTION_ORDER_TYPEHASH =
         keccak256(
-            "Order(address maker,Asset makeAsset,address taker,CollectionAsset takeAsset,uint256 salt,uint256 start,uint256 end,uint16 index)Asset(uint8 assetType,address contractAddress,uint256 value,uint256 id)CollectionAsset(uint8 assetType,address contractAddress,uint256 value)"
+            "BidCollectionOrder(address maker,Asset makeAsset,address taker,CollectionAsset bidCollectionAsset,uint256 salt,uint256 start,uint256 end,uint16 index)Asset(uint8 assetType,address contractAddress,uint256 value,uint256 id)CollectionAsset(uint8 assetType,address contractAddress,uint256 value)"
         );
 
     bytes32 constant BULK_ORDER_TYPEHASH =
@@ -42,6 +42,22 @@ library LibOrder {
         LibAsset.Asset makeAsset;
         address taker;
         LibAsset.Asset takeAsset;
+        uint256 salt;
+        uint256 start;
+        uint256 end;
+        Fee originFee;
+        Fee royaltyFee;
+        bytes sig;
+        bytes32 root;
+        bytes32[] proof;
+        uint16 index;
+    }
+
+    struct BidCollectionOrder {
+        address maker;
+        LibAsset.Asset makeAsset;
+        address taker;
+        LibAsset.CollectionAsset bidCollectionAsset;
         uint256 salt;
         uint256 start;
         uint256 end;
@@ -113,7 +129,7 @@ library LibOrder {
     }
 
     function hashCollection(
-        Order memory order
+        BidCollectionOrder memory order
     ) internal pure returns (bytes32) {
         return
             keccak256(
@@ -122,7 +138,7 @@ library LibOrder {
                     order.maker,
                     LibAsset.hashAssetV2(order.makeAsset),
                     order.taker,
-                    LibAsset.hashCollectionAssetV2(order.takeAsset),
+                    LibAsset.hashCollectionAssetV2(order.bidCollectionAsset),
                     order.salt,
                     order.start,
                     order.end,

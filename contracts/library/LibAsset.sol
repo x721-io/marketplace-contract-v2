@@ -49,7 +49,7 @@ library LibAsset {
     }
 
     function hashCollectionAssetV2(
-        Asset memory asset
+        CollectionAsset memory asset
     ) internal pure returns (bytes32) {
         return
             keccak256(

@@ -5,6 +5,7 @@ pragma abicoder v2;
 import "../contracts/Initializable.sol";
 import "../contracts/OwnableUpgradeable.sol";
 import "../contracts/interface/IAssetMatcher.sol";
+import "../contracts/library/LibOrder.sol";
 
 abstract contract AssetMatcher is Initializable, OwnableUpgradeable {
     bytes constant EMPTY = "";
@@ -12,10 +13,10 @@ abstract contract AssetMatcher is Initializable, OwnableUpgradeable {
 
     event MatcherChange(uint256 indexed assetType, address matcher);
 
-    function setAssetMatcher(uint256 assetType, address matcher)
-        external
-        onlyOwner
-    {
+    function setAssetMatcher(
+        uint256 assetType,
+        address matcher
+    ) external onlyOwner {
         matchers[assetType] = matcher;
         emit MatcherChange(assetType, matcher);
     }
@@ -23,15 +24,23 @@ abstract contract AssetMatcher is Initializable, OwnableUpgradeable {
     function matchAssets(
         LibAsset.Asset memory leftAsset,
         LibAsset.Asset memory rightAsset,
-        uint256 currentFilledAmt
+        uint256 currentFilledAmt,
+        LibOrder.OrderType orderType
     ) internal view returns (LibAsset.Asset memory) {
         LibAsset.Asset memory result = matchAssetOneSide(
             leftAsset,
             rightAsset,
-            currentFilledAmt
+            currentFilledAmt,
+            orderType
         );
         if (result.assetType == 1) {
-            return matchAssetOneSide(rightAsset, leftAsset, currentFilledAmt);
+            return
+                matchAssetOneSide(
+                    rightAsset,
+                    leftAsset,
+                    currentFilledAmt,
+                    orderType
+                );
         } else {
             return result;
         }
@@ -40,7 +49,8 @@ abstract contract AssetMatcher is Initializable, OwnableUpgradeable {
     function matchAssetOneSide(
         LibAsset.Asset memory leftAsset,
         LibAsset.Asset memory rightAsset,
-        uint256 currentFilledAmt
+        uint256 currentFilledAmt,
+        LibOrder.OrderType orderType
     ) private view returns (LibAsset.Asset memory) {
         uint256 defaultValue = 0;
         address zeroAddress = 0x0000000000000000000000000000000000000000;
@@ -52,13 +62,13 @@ abstract contract AssetMatcher is Initializable, OwnableUpgradeable {
         }
         if (leftAsset.assetType == 2) {
             if (rightAsset.assetType == 2) {
-                return simpleMatch(leftAsset, rightAsset);
+                return simpleMatch(leftAsset, rightAsset, orderType);
             }
             return LibAsset.Asset(0, zeroAddress, defaultValue, defaultValue);
         }
         if (leftAsset.assetType == 3) {
             if (rightAsset.assetType == 3) {
-                return simpleMatch(leftAsset, rightAsset);
+                return simpleMatch(leftAsset, rightAsset, orderType);
             }
             return LibAsset.Asset(0, zeroAddress, defaultValue, defaultValue);
         }
@@ -73,23 +83,32 @@ abstract contract AssetMatcher is Initializable, OwnableUpgradeable {
             return IAssetMatcher(matcher).matchAssets(leftAsset, rightAsset);
         }
         if (leftAsset.assetType == rightAsset.assetType) {
-            return simpleMatch(leftAsset, rightAsset);
+            return simpleMatch(leftAsset, rightAsset, orderType);
         }
         revert("not found IAssetMatcher");
     }
 
     function simpleMatch(
         LibAsset.Asset memory leftAsset,
-        LibAsset.Asset memory rightAsset
+        LibAsset.Asset memory rightAsset,
+        LibOrder.OrderType orderType
     ) private pure returns (LibAsset.Asset memory) {
         uint256 defaultValue = 0;
         address zeroAddress = 0x0000000000000000000000000000000000000000;
-        if (
-            leftAsset.assetType == rightAsset.assetType &&
-            leftAsset.value == rightAsset.value
-        ) {
-            return leftAsset;
+
+        if (leftAsset.assetType == rightAsset.assetType) {
+            if (
+                orderType != LibOrder.OrderType.BID_COLLECTION ||
+                leftAsset.assetType != 3
+            ) {
+                if (leftAsset.value == rightAsset.value) {
+                    return leftAsset;
+                }
+            } else {
+                return leftAsset;
+            }
         }
+
         return LibAsset.Asset(1, zeroAddress, defaultValue, defaultValue);
     }
 

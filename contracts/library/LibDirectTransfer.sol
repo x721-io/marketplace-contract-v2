@@ -30,4 +30,9 @@ library LibDirectTransfer {
         LibOrder.Order bidOrder;
         LibOrder.Order sellOrder;
     }
+
+        struct AcceptBidCollection {
+        LibOrder.BidCollectionOrder bidOrder;
+        LibOrder.Order sellOrder;
+    }
 }

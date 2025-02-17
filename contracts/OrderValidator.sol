@@ -8,7 +8,11 @@ import "../contracts/ContextUpgradeable.sol";
 import "../contracts/library/LibSignature.sol";
 import "../contracts/library/LibOrder.sol";
 
-abstract contract OrderValidator is Initializable, ContextUpgradeable, EIP712Upgradeable {
+abstract contract OrderValidator is
+    Initializable,
+    ContextUpgradeable,
+    EIP712Upgradeable
+{
     using LibSignature for bytes32;
     using AddressUpgradeable for address;
 
@@ -18,21 +22,54 @@ abstract contract OrderValidator is Initializable, ContextUpgradeable, EIP712Upg
         __EIP712_init_unchained("X721Exchange", "1");
     }
 
-    function validate(LibOrder.Order memory order, bytes memory signature) internal view {
+    function validate(
+        LibOrder.Order memory order,
+        bytes memory signature
+    ) internal view {
+        require(order.maker != address(0), "no maker");
         if (order.salt == 0) {
-            require(order.maker != address(0) && _msgSender() == order.maker, "maker is not tx sender");
+            require(
+                order.maker != address(0) && _msgSender() == order.maker,
+                "maker is not tx sender"
+            );
         } else {
             bytes32 hash;
-            if (order.orderType == LibOrder.OrderType.SINGLE || order.orderType == LibOrder.OrderType.BID) {
+            if (
+                order.orderType == LibOrder.OrderType.SINGLE ||
+                order.orderType == LibOrder.OrderType.BID
+            ) {
                 hash = LibOrder.hash(order);
-            } else if (order.orderType == LibOrder.OrderType.BID_COLLECTION) {
-                hash = LibOrder.hashCollection(order);
-            } else {
+            } else if (order.orderType == LibOrder.OrderType.BULK) {
                 hash = LibOrder.hashBulkOrder(order, order.root);
+            } else {
+                revert("Unsupported order type");
             }
 
             if (_msgSender() != order.maker) {
-                require(_hashTypedDataV4(hash).recover(signature) == order.maker, "order signature verification error");
+                require(
+                    _hashTypedDataV4(hash).recover(signature) == order.maker,
+                    "order signature verification error"
+                );
+            }
+        }
+    }
+
+    function validateCollectionBidOrder(
+        LibOrder.BidCollectionOrder memory order,
+        bytes memory signature
+    ) internal view {
+        if (order.salt == 0) {
+            require(
+                order.maker != address(0) && _msgSender() == order.maker,
+                "maker is not tx sender"
+            );
+        } else {
+            bytes32 hash = LibOrder.hashCollection(order);
+            if (_msgSender() != order.maker) {
+                require(
+                    _hashTypedDataV4(hash).recover(signature) == order.maker,
+                    "order signature verification for bid collection order error"
+                );
                 require(order.maker != address(0), "no maker");
             }
         }
