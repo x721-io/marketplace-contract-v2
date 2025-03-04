@@ -26,12 +26,12 @@ library LibSignature {
         if (signature.length != 65) {
             revert("ECDSA: invalid signature length");
         }
-
+ 
         // Divide the signature in r, s and v variables
         bytes32 r;
         bytes32 s;
         uint8 v;
-
+    
         // ecrecover takes the signature parameters, and the only way to get them
         // currently is to use assembly.
         // solhint-disable-next-line no-inline-assembly
