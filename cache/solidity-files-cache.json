@@ -2784,8 +2784,8 @@
       ]
     },
     "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/ExchangeV2Core.sol": {
-      "lastModificationDate": 1739431977760,
-      "contentHash": "47a7be553c441b357e6fdc84c61772d6",
+      "lastModificationDate": 1741061960932,
+      "contentHash": "75bdda8d5c83b1ddfcf2f4ffaff17be1",
       "sourceName": "contracts/ExchangeV2Core.sol",
       "solcConfig": {
         "version": "0.7.6",
@@ -2819,7 +2819,8 @@
         "../contracts/OrderValidator.sol",
         "../contracts/library/LibDirectTransfer.sol",
         "../contracts/library/LibFill.sol",
-        "../contracts/interface/ITransferManager.sol"
+        "../contracts/interface/ITransferManager.sol",
+        "@openzeppelin/contracts/utils/ReentrancyGuard.sol"
       ],
       "versionPragmas": [
         "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
@@ -2829,8 +2830,8 @@
       ]
     },
     "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/OrderValidator.sol": {
-      "lastModificationDate": 1739249762444,
-      "contentHash": "3f24b8544da8d9cbdd9eb92e5563643e",
+      "lastModificationDate": 1741665961939,
+      "contentHash": "e7c4279f2149ad15ef3596311ce9a9ee",
       "sourceName": "contracts/OrderValidator.sol",
       "solcConfig": {
         "version": "0.7.6",
@@ -2861,7 +2862,8 @@
         "../contracts/EIP712Upgradeable.sol",
         "../contracts/ContextUpgradeable.sol",
         "../contracts/library/LibSignature.sol",
-        "../contracts/library/LibOrder.sol"
+        "../contracts/library/LibOrder.sol",
+        "../contracts/interface/IERC1271.sol"
       ],
       "versionPragmas": [
         "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
@@ -2985,7 +2987,7 @@
       ]
     },
     "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/EIP712Upgradeable.sol": {
-      "lastModificationDate": 1736906267921,
+      "lastModificationDate": 1741942031670,
       "contentHash": "5daa5925852febbc362da58b5cc3988a",
       "sourceName": "contracts/EIP712Upgradeable.sol",
       "solcConfig": {
@@ -3023,8 +3025,8 @@
       ]
     },
     "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/library/LibSignature.sol": {
-      "lastModificationDate": 1736906267939,
-      "contentHash": "6a7b3bc07ada37e4a26fde4353f8764a",
+      "lastModificationDate": 1739781306125,
+      "contentHash": "424e0b47139206a63cc34dd23b6d8065",
       "sourceName": "contracts/library/LibSignature.sol",
       "solcConfig": {
         "version": "0.7.6",
@@ -3092,6 +3094,84 @@
       ],
       "artifacts": [
         "IERC1271"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/node_modules/@openzeppelin/contracts/utils/ReentrancyGuard.sol": {
+      "lastModificationDate": 1736906274024,
+      "contentHash": "1c60f58cee45c61469e1aea31e4dd879",
+      "sourceName": "@openzeppelin/contracts/utils/ReentrancyGuard.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        ">=0.6.0 <0.8.0"
+      ],
+      "artifacts": [
+        "ReentrancyGuard"
+      ]
+    },
+    "/Users/levu/Desktop/projects/marketplace-contract-v2/contracts/ERC20TransferProxy.sol": {
+      "lastModificationDate": 1743394567639,
+      "contentHash": "b18937ecc53479119b9df5c1b63fc295",
+      "sourceName": "contracts/ERC20TransferProxy.sol",
+      "solcConfig": {
+        "version": "0.7.6",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata",
+                "storageLayout"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "<0.8.0 =0.7.6 >=0.4.24 >=0.6.0 >=0.6.2 >=0.6.9 ^0.7.0"
+      ],
+      "artifacts": [
+        "Context",
+        "IERC20",
+        "OperatorRole",
+        "Ownable",
+        "OwnableOperatorRole",
+        "Roles",
+        "X721ERC20TransferProxy"
       ]
     }
   }

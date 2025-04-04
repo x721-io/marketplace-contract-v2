@@ -1,0 +1,16 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "Context",
+  "sourceName": "contracts/ERC20TransferProxy.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    }
+  ],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea26469706673582212207b5a8f379e71462b1b2b2eea3e5e7c8825bc837723131f73243eb6302d3540d764736f6c63430007060033",
+  "deployedBytecode": "0x6080604052600080fdfea26469706673582212207b5a8f379e71462b1b2b2eea3e5e7c8825bc837723131f73243eb6302d3540d764736f6c63430007060033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

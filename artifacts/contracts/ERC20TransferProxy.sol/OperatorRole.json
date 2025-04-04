@@ -1,0 +1,61 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "OperatorRole",
+  "sourceName": "contracts/ERC20TransferProxy.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "OperatorAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "OperatorRemoved",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "isOperator",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b50610132806100206000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c80636d70f7ae14602d575b600080fd5b605060048036036020811015604157600080fd5b50356001600160a01b03166064565b604080519115158252519081900360200190f35b6000606e81836074565b92915050565b60006001600160a01b03821660ba5760405162461bcd60e51b81526004018080602001828103825260228152602001806100db6022913960400191505060405180910390fd5b506001600160a01b03166000908152602091909152604090205460ff169056fe526f6c65733a206163636f756e7420697320746865207a65726f2061646472657373a26469706673582212204dc4ca71de1a0fdc22778c556b3b71e9cf2c5f3166db6ff9e2c8744a00031f7c64736f6c63430007060033",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c80636d70f7ae14602d575b600080fd5b605060048036036020811015604157600080fd5b50356001600160a01b03166064565b604080519115158252519081900360200190f35b6000606e81836074565b92915050565b60006001600160a01b03821660ba5760405162461bcd60e51b81526004018080602001828103825260228152602001806100db6022913960400191505060405180910390fd5b506001600160a01b03166000908152602091909152604090205460ff169056fe526f6c65733a206163636f756e7420697320746865207a65726f2061646472657373a26469706673582212204dc4ca71de1a0fdc22778c556b3b71e9cf2c5f3166db6ff9e2c8744a00031f7c64736f6c63430007060033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

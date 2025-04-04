@@ -7,6 +7,7 @@ import "../contracts/EIP712Upgradeable.sol";
 import "../contracts/ContextUpgradeable.sol";
 import "../contracts/library/LibSignature.sol";
 import "../contracts/library/LibOrder.sol";
+import "../contracts/interface/IERC1271.sol";
 
 abstract contract OrderValidator is
     Initializable,
@@ -46,10 +47,21 @@ abstract contract OrderValidator is
             }
 
             if (_msgSender() != order.maker) {
-                require(
-                    _hashTypedDataV4(hash).recover(signature) == order.maker,
-                    "order signature verification error"
-                );
+                if (order.maker.isContract()) {
+                    require(
+                        IERC1271(order.maker).isValidSignature(
+                            _hashTypedDataV4(hash),
+                            signature
+                        ) == MAGICVALUE,
+                        "contract order signature verification error"
+                    );
+                } else {
+                    require(
+                        _hashTypedDataV4(hash).recover(signature) ==
+                            order.maker,
+                        "order signature verification error"
+                    );
+                }
             }
         }
     }

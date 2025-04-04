@@ -22,18 +22,23 @@ module.exports = {
   networks: {
     u2uTestnet: {
       url: "https://rpc-nebulas-testnet.uniultra.xyz",
-      accounts: ['47d0cdc110d9f88adaabd4e42186b007c650b083a54be583ca86796afee30f22'],
+      accounts: ['a67e478b3157fe8f554e58621c12364ac47050d3c6cfb7efb1bc9d18d0d31e98'],
       // gas: 8000000
     },
     u2uMainnet: {
       url: "https://rpc-mainnet.uniultra.xyz",
-      accounts: ['47d0cdc110d9f88adaabd4e42186b007c650b083a54be583ca86796afee30f22'],
+      accounts: ['a67e478b3157fe8f554e58621c12364ac47050d3c6cfb7efb1bc9d18d0d31e98'],
+    },
+    ancient8Testnet: {
+      url: "https://rpcv2-testnet.ancient8.gg/Q3uPPzhZWKvT8rANT8U58DVJMBQCLzHNi",
+      accounts: ['a67e478b3157fe8f554e58621c12364ac47050d3c6cfb7efb1bc9d18d0d31e98'],
     }
   },
   etherscan: {
     apiKey: {
       u2uTestnet: "hi",
-      u2uMainnet: "hi"
+      u2uMainnet: "hi",
+      ancient8Testnet: "hi"
     },
     customChains: [
       {
@@ -51,7 +56,15 @@ module.exports = {
           apiURL: "https://u2uscan.xyz/api",
           browserURL: "https://u2uscan.xyz/"
         }
-      }
+      },
+      {
+        network: "ancient8Testnet",
+        chainId: 28122024,
+        urls: {
+          apiURL: "https://explorer-ancient-8-celestia-wib77nnwsq.t.conduit.xyz/api",
+          browserURL: "https://scanv2-testnet.ancient8.gg/"
+        }
+      },
     ]
   },
 };
